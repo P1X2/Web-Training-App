@@ -26,6 +26,8 @@ public class User implements UserDetails {
     @GeneratedValue
     private Long id;
     private String username;
+    private String password;
+    private String gender;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
