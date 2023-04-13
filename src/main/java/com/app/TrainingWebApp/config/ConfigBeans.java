@@ -23,12 +23,9 @@ public class ConfigBeans {
     public UserDetailsService userDetailsService() {
 //        return username -> repository.findByUsername(username)
 //                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                return repository.findByUsername(username).orElseThrow();
-            }
-        };
+        return username -> repository.findByUsername(username).orElseThrow(
+                () -> new UsernameNotFoundException("User not found")
+        );
     }
 
 

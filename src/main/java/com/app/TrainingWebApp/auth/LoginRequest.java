@@ -1,13 +1,13 @@
 package com.app.TrainingWebApp.auth;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Data
-public class RegisterRequest {
+public class LoginRequest {
     private String username;
     private String password;
-    private String gender;
 }
