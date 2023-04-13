@@ -23,10 +23,23 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(
-        @RequestBody RegisterRequest registerRequest
+            @RequestBody RegisterRequest registerRequest
     ) {
 
         return ResponseEntity.ok(authenticationService.register(registerRequest).getUsername());
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(
+
+            @RequestBody LoginRequest request
+    ) {
+        try {
+            return ResponseEntity.ok(authenticationService.loginUser(request));
+        } catch (Throwable e) {
+            System.out.println(e.toString());
+        }
+        return null;
     }
 
 
