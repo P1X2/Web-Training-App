@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./login/Login";
 import PrivateRoute from "./private_page/PrivatePage";
 import Register from "./registeer/Register";
+import BmiCalculator from "./calculator/Calculator";
 
 function App() {
   // console.log(sendRequest("rest/auth//get?username=wojtek398", "GET"));
@@ -15,6 +16,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/calculator" element={<BmiCalculator />}></Route>
       <Route
         path="/aaa"
         element={
