@@ -29,14 +29,14 @@ const Register = () => {
       password: password,
     };
     console.log(requestBody);
-    sendRequest("rest/auth/register", "POST", null, requestBody)
-      .then((response) => {
+    sendRequest("rest/auth/register", "POST", null, requestBody).then(
+      (response) => {
         console.log(response);
         window.location.href = "login";
-      })
-      .catch((errorResponse) => {
-        alert(errorResponse);
-      });
+      }
+    );
+    //   .catch((errorResponse) => {
+    //     alert(errorResponse);});
   }
 
   return (
@@ -103,6 +103,7 @@ const Register = () => {
         <Button type="submit" onClick={() => sendRegistrationRequest()}>
           Register
         </Button>
+        <a href="login"> Login</a>
       </Form>
     </>
   );
