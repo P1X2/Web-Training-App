@@ -9,9 +9,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [jwt, setJwt] = useLocalState("", "jwt");
   function sendLoginRequest() {
-    //default request is get
-    //logowanie do stworzonego użytkownika
-
     const requestBody = {
       username: username,
       password: password,
@@ -20,8 +17,8 @@ const Login = () => {
     sendRequest("rest/auth/login", "POST", "", requestBody)
       .then((data) => {
         console.log(data);
-        // setJwt(data.jwtToken);
-        window.location.href = "assignments";
+        setJwt(data.jwtToken);
+        window.location.href = "/aaa";
       })
       .catch((message) => {
         alert(message);
@@ -31,7 +28,7 @@ const Login = () => {
   return (
     <>
       <Container className="mt-3">
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3">
           <Form.Label>Username</Form.Label>
           <Form.Control
             className="sm-2 w-50"
@@ -44,7 +41,7 @@ const Login = () => {
             }
           />
         </Form.Group>
-        <Form.Group className="mb-3 w-50" controlId="formBasicEmail">
+        <Form.Group className="mb-3 w-50">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"

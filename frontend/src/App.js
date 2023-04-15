@@ -5,13 +5,25 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./homepage/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./login/Login";
+import PrivateRoute from "./private_page/PrivatePage";
+import Register from "./registeer/Register";
 
 function App() {
   // console.log(sendRequest("rest/auth//get?username=wojtek398", "GET"));
+  //cos nie dziala
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route
+        path="/aaa"
+        element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        }
+      ></Route>
+      <Route path="/register" element={<Register />}></Route>
     </Routes>
   );
 }
