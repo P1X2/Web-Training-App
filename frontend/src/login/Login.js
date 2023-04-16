@@ -65,7 +65,17 @@ const Login = () => {
             >
               Login
             </Button>
-            <a href="register">Register</a>
+            <Button
+              className="m-3"
+              onClick={() => window.location.href = "/register"}
+              size="lg"
+              id="submit"
+              type="button"
+              color="Dark"
+            >
+              Register
+              
+            </Button>
           </Col>
         </Row>
       </Container>
