@@ -10,11 +10,10 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Exercise {
+public class ExerciseBlank {
     @Id
     @GeneratedValue
     private Long id;
