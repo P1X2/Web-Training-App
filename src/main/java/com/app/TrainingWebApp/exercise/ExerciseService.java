@@ -15,6 +15,7 @@ public class ExerciseService {
     private final Integer AVERAGE_WEIGHT = 75;
     @Autowired
     private final ExerciseBlankRepository exerciseBlankRepository;
+    private final ExerciseForPlanRepository exerciseForPlanRepository;
 
     public List<ExerciseBlank> getAllExercisesBlank(){
         return exerciseBlankRepository.findAll();
@@ -78,14 +79,14 @@ public class ExerciseService {
                 throw new IllegalArgumentException("Invalid advancement given: "+ request.getAdvancement());
             }
             weight *= request.getWeight()/AVERAGE_WEIGHT;
-
-        return ExerciseForPlan.builder()
+        ExerciseForPlan exerciseForPlan = ExerciseForPlan.builder()
                 .name(exerciseBlank.getName())
                 .videoUrl(exerciseBlank.getVideoUrl())
                 .muscleGroup(exerciseBlank.getMuscleGroup())
                 .weight(weight)
                 .reps(reps)
                 .build();
+        return exerciseForPlanRepository.save(exerciseForPlan);
     }
 
 }
