@@ -16,6 +16,10 @@ public class ExerciseService {
     @Autowired
     private final ExerciseBlankRepository exerciseBlankRepository;
 
+    public List<ExerciseBlank> getAllExercisesBlank(){
+        return exerciseBlankRepository.findAll();
+    }
+
     public List<ExerciseBlank> getExercisesBlankByMuscleGroup(MuscleGroup muscleGroup){
         List<ExerciseBlank> exercises = exerciseBlankRepository.findByMuscleGroup(muscleGroup);
         if (exercises.isEmpty()){
@@ -33,7 +37,7 @@ public class ExerciseService {
         ){
             throw new IllegalArgumentException("request is wrong");
         }
-        return ExerciseBlank
+        ExerciseBlank exerciseBlank = ExerciseBlank
                 .builder()
                 .name(request.getName())
                 .maxReps(request.getMaxReps())
@@ -43,6 +47,7 @@ public class ExerciseService {
                 .muscleGroup(request.getMuscleGroup())
                 .videoUrl(request.getVideoUrl())
                 .build();
+        return exerciseBlankRepository.save(exerciseBlank);
     }
 
     public ExerciseForPlan createExerciseForPlan(ExerciseForPlanCreateRequest request)
