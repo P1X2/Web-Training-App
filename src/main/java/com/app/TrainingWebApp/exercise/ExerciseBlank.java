@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExerciseBlank {
@@ -20,6 +21,8 @@ public class ExerciseBlank {
     private String name;
     private Integer minReps;
     private Integer maxReps;
+    private Integer minWeight;
+    private Integer maxWeight;
     private String videoUrl;
     private MuscleGroup muscleGroup;
 }
