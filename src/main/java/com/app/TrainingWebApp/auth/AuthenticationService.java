@@ -3,6 +3,7 @@ package com.app.TrainingWebApp.auth;
 
 import com.app.TrainingWebApp.config.JwtService;
 import com.app.TrainingWebApp.exceptions.UsernameAlreadyExistsException;
+import com.app.TrainingWebApp.user.Role;
 import com.app.TrainingWebApp.user.User;
 import com.app.TrainingWebApp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,7 @@ public class AuthenticationService {
                 .username(request.getUsername())
                 .password(new BCryptPasswordEncoder().encode(request.getPassword()))
                 .gender(request.getGender())
+                .role(Role.USER)
                 .build();
         return userRepository.save(user);
     }
