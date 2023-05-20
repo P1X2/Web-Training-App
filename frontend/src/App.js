@@ -8,6 +8,7 @@ import Login from "./login/Login";
 import PrivateRoute from "./private_page/PrivatePage";
 import Register from "./registeer/Register";
 import BmiCalculator from "./calculator/Calculator";
+import TrainingPlan from "./training_creator/TrainingCreator";
 
 function App() {
   // console.log(sendRequest("rest/auth//get?username=wojtek398", "GET"));
@@ -17,6 +18,7 @@ function App() {
       <Route path="/" element={<Home />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/calculator" element={<BmiCalculator />}></Route>
+      <Route path="/training_creator" element={<TrainingPlan />}></Route>
       <Route
         path="/aaa"
         element={
