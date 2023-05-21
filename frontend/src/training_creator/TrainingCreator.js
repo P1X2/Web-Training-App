@@ -13,6 +13,13 @@ function TrainingPlan() {
   const [tutorialUrl, setTutorialUrl] = useState("");
   const [muscleGroup, setMuscleGroup] = useState("");
 
+  
+  const muscleGroups = [
+    "LEGS",
+    "ARMS",
+    "BACK",
+    "CHEST",
+    "ABS"];
 
 
   useEffect(() => {
@@ -52,12 +59,14 @@ function TrainingPlan() {
       videoUrl: tutorialUrl,
       muscleGroup: muscleGroup,
     };
+
+
   
     //try {
     try {
       sendRequest("rest/exercise/blank/create", "POST", null, exercise);
   
-      fetchExercises(); // Fetch the updated exercise list from the server
+      //fetchExercises(); // Fetch the updated exercise list from the server
       setExerciseName("");
       setMinReps("");
       setMaxReps("");
@@ -65,9 +74,11 @@ function TrainingPlan() {
       setMinWeight("");
       setTutorialUrl("");
       setMuscleGroup("");
+      fetchExercises();
     } catch (error) {
       console.error("Error occurred while saving exercise", error);
     }
+    fetchExercises();
   };
     
 
@@ -175,7 +186,23 @@ function TrainingPlan() {
             />
           </Form.Group>             
 
-          <Form.Group className="mb-3">
+          <div>
+            <label htmlFor="muscleGroup">Muscle Group:</label>
+            <select
+              id="muscleGroup"
+              value={muscleGroup}
+              onChange={(event) => setMuscleGroup(event.target.value)}
+            >
+              <option value="">Select a muscle group</option>
+              {muscleGroups.map((group) => (
+                <option key={group} value={group}>
+                  {group}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* <Form.Group className="mb-3">
             <Form.Label>Muscle Group</Form.Label>
             <Form.Control
               type="text"
@@ -183,7 +210,7 @@ function TrainingPlan() {
               onChange={(event) => setMuscleGroup(event.target.value)}
               required
             />
-          </Form.Group>
+          </Form.Group> */}
           <Button variant="primary" type="submit">
             Add Exercise
           </Button>
@@ -208,13 +235,9 @@ function TrainingPlan() {
                   </p>
                 </div>
                 <div>
-                  <a
-                    href={exercise.tutorialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Tutorial Video
-                  </a>
+                
+                   <a href={exercise.videoUrl} target="_blank" rel="noopener noreferrer">Tutorial Video</a>
+                
                   <Button
                     variant="danger"
                     className="ms-3"
