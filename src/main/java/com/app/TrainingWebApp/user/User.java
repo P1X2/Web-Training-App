@@ -1,10 +1,8 @@
 package com.app.TrainingWebApp.user;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.app.TrainingWebApp.plan.TrainingPlan;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,6 +27,8 @@ public class User implements UserDetails {
     private String password;
     private String gender;
     private Role role;
+    @OneToOne
+    private TrainingPlan trainingPlan;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
