@@ -13,10 +13,17 @@ const Quiz = () => {
   const [muscleGroup, setMuscleGroup] = useState('');
   const [trainingIntensity, setTrainingIntensity] = useState('');
   const [experienceLevel, setExperienceLevel] = useState('');
+    const [trained, setTrained] = useState('');
+  let intensity=0;
+
 
   const handleGoalChange = (e) => {
     setGoal(e.target.value);
   };
+
+    const handleTrainedChange = (e) => {
+      setTrained(e.target.value);
+    };
 
   const handleAgeChange = (e) => {
     setAge(e.target.value);
@@ -58,18 +65,62 @@ const Quiz = () => {
     e.preventDefault();
 
     // Determine experience level
-    let experienceLevel = '';
-    if (age >= 18 && age <= 25) {
-      experienceLevel = 'beginner';
-    } else if (age > 25 && age <= 40) {
-      experienceLevel = 'intermediate';
-    } else if (age > 40) {
-      experienceLevel = 'advanced';
+    let experienceLevel = "";
+    let experiencePoints=0;
+    let experiencePointsMultiplayer=0;
+    let intensity=0;
+    //wiek war
+    if (age < 18) {
+      alert("You can use this utility only if you are older than 18");
+      return;
+        }
+    // wiek points
+    if (age >=18 && age <=30) {
+      experiencePoints+=20;
+            }
+    if (age >=31 && age <=50) {
+      experiencePoints+=20;
+            }
+    if (age >=51) {
+      experiencePoints+=10;
+            }
+    // plec
+    if (gender="male") {
+          experiencePointsMultiplayer+=1;
+                }
+    if (gender="female") {
+          experiencePointsMultiplayer+=0.5;
+                }
+    // waga
+    if (currentWeight<50) {
+          experiencePoints+=5;
+                }
+    if (currentWeight>=50 && currentWeight<=80) {
+          experiencePoints+=10;
+                }
+    if (currentWeight>=81) {
+          experiencePoints+=20;
+                }
+    // trained
+    if (trained="yes") {
+          experiencePointsMultiplayer+=0.5;
     }
+
+    if (trained="no") {
+          experiencePointsMultiplayer+=0;
+    }
+    // ciezkie czy lekkie
+
+
+
 
     // Set experience level state
     setExperienceLevel(experienceLevel);
   };
+
+
+
+
 
   return (
     <div className="container">
@@ -102,17 +153,6 @@ const Quiz = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="height">What is your height (in cm)?</label>
-          <input
-            type="number"
-            className="form-control"
-            id="height"
-            value={height}
-            onChange={handleHeightChange}
-            required
-          />
-        </div>
-        <div className="form-group">
           <label htmlFor="gender">What is your gender?</label>
           <select
             className="form-control"
@@ -138,15 +178,18 @@ const Quiz = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="targetWeight">What is your target weight (in kg)?</label>
-          <input
-            type="number"
-            className="form-control"
-            id="targetWeight"
-            value={targetWeight}
-            onChange={handleTargetWeightChange}
-            required
-          />
+          <label htmlFor="trained">Have you ever trained in the gym before?</label>
+          <select
+              className="form-control"
+              id="trained"
+              value={trained}
+              onChange={handleTrainedChange}
+              required
+            >
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
         </div>
         <div className="form-group">
           <label htmlFor="trainingFrequency">How many training sessions per week do you want to have?</label>
@@ -202,7 +245,7 @@ const Quiz = () => {
             <option value="heavy">Heavy</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Submit your answers</button>
       </form>
 
 
@@ -210,6 +253,18 @@ const Quiz = () => {
         <div className="mt-3">
           <h4>Quiz Result</h4>
           <p>Your Experience Level: {experienceLevel}</p>
+          <p>Training intensity : {intensity}</p>
+          <p>Estimated time needed(in minutes) : {intensity}</p>
+
+          <p>Proposed training plan</p>
+
+
+
+
+
+          //proponowany plan treningowy
+
+
         </div>
       )}
     </div>
