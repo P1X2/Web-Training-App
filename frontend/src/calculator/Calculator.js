@@ -36,7 +36,7 @@ function BmiCalculator() {
 
 return (
     <Container className="my-5">
-      <h1>Calculators</h1>
+      <h1 class="text-lg-center fs-1">Calculators</h1>
 
       <div className="my-5">
         <h2>BMI Calculator</h2>

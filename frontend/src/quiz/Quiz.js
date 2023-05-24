@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Row } from "react-bootstrap";
 
 const Quiz = () => {
   const [goal, setGoal] = useState('');
@@ -147,11 +147,13 @@ const Quiz = () => {
 
 
   return (
-    <div className="container">
+    <div className="container ">
+        <div class="row">
+            <div class="col-sm">
+              <h1 class="text-center">Gym Quiz</h1>
+            </div>
 
-
-
-      <h1>Gym Quiz</h1>
+          </div>
 
 
 
