@@ -129,7 +129,7 @@ const Quiz = () => {
          }
 
     if (experienceScore<25) {
-        experienceLevel="Niggner";
+        experienceLevel="Begginer";
         }
 
 
