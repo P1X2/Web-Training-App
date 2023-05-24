@@ -4,17 +4,17 @@ import { Container, Form, Button } from "react-bootstrap";
 const Quiz = () => {
   const [goal, setGoal] = useState('');
   const [age, setAge] = useState('');
-  const [height, setHeight] = useState('');
   const [gender, setGender] = useState('');
   const [currentWeight, setCurrentWeight] = useState('');
-  const [targetWeight, setTargetWeight] = useState('');
   const [trainingFrequency, setTrainingFrequency] = useState('');
   const [trainingDuration, setTrainingDuration] = useState('');
   const [muscleGroup, setMuscleGroup] = useState('');
   const [trainingIntensity, setTrainingIntensity] = useState('');
   const [experienceLevel, setExperienceLevel] = useState('');
     const [trained, setTrained] = useState('');
-  let intensity=0;
+    const [time, setTime] = useState('');
+    const [intensity, setIntensity] = useState('');
+    const [experienceScore, setExperienceScore] = useState("");
 
 
   const handleGoalChange = (e) => {
@@ -29,20 +29,12 @@ const Quiz = () => {
     setAge(e.target.value);
   };
 
-  const handleHeightChange = (e) => {
-    setHeight(e.target.value);
-  };
-
   const handleGenderChange = (e) => {
     setGender(e.target.value);
   };
 
   const handleCurrentWeightChange = (e) => {
     setCurrentWeight(e.target.value);
-  };
-
-  const handleTargetWeightChange = (e) => {
-    setTargetWeight(e.target.value);
   };
 
   const handleTrainingFrequencyChange = (e) => {
@@ -66,9 +58,13 @@ const Quiz = () => {
 
     // Determine experience level
     let experienceLevel = "";
+
     let experiencePoints=0;
     let experiencePointsMultiplayer=0;
-    let intensity=0;
+    let experienceScore=0;
+
+    let intensity="";
+    let time = 0;
     //wiek war
     if (age < 18) {
       alert("You can use this utility only if you are older than 18");
@@ -76,7 +72,7 @@ const Quiz = () => {
         }
     // wiek points
     if (age >=18 && age <=30) {
-      experiencePoints+=20;
+      experiencePoints+=15;
             }
     if (age >=31 && age <=50) {
       experiencePoints+=20;
@@ -84,37 +80,65 @@ const Quiz = () => {
     if (age >=51) {
       experiencePoints+=10;
             }
-    // plec
-    if (gender="male") {
+    // plec=
+    if (gender==="male") {
           experiencePointsMultiplayer+=1;
                 }
-    if (gender="female") {
-          experiencePointsMultiplayer+=0.5;
+    if (gender==="female") {
+          experiencePointsMultiplayer+=0.7;
                 }
     // waga
-    if (currentWeight<50) {
+    if (currentWeight<60) {
           experiencePoints+=5;
                 }
-    if (currentWeight>=50 && currentWeight<=80) {
+    if (currentWeight>=60 && currentWeight<=80) {
           experiencePoints+=10;
                 }
     if (currentWeight>=81) {
           experiencePoints+=20;
                 }
     // trained
-    if (trained="yes") {
+    if (trained==="yes") {
           experiencePointsMultiplayer+=0.5;
     }
 
-    if (trained="no") {
+    if (trained==="no") {
           experiencePointsMultiplayer+=0;
     }
+
     // ciezkie czy lekkie
+    if (trainingIntensity==="light") {
+          intensity="Medium";
+            experiencePointsMultiplayer+=0.0;
+          }
+
+    if (trainingIntensity==="heavy") {
+          intensity="High";
+            experiencePointsMultiplayer+=0.3;
+          }
+
+
+    experienceScore = experiencePoints * experiencePointsMultiplayer;
+
+    if (experienceScore>=40) {
+        experienceLevel="Advanced";
+         }
+
+    if (experienceScore<=40 && experienceScore>=25) {
+        experienceLevel="Intermediate";
+         }
+
+    if (experienceScore<25) {
+        experienceLevel="Niggner";
+        }
 
 
 
 
-    // Set experience level state
+
+    setExperienceScore(experienceScore);
+    setTime(trainingDuration * trainingFrequency);
+    setIntensity(intensity);
     setExperienceLevel(experienceLevel);
   };
 
@@ -252,9 +276,10 @@ const Quiz = () => {
       {experienceLevel && (
         <div className="mt-3">
           <h4>Quiz Result</h4>
-          <p>Your Experience Level: {experienceLevel}</p>
+          <p>Your Experience Score: {experienceScore}</p>
+          <p>Estimated experience level: {experienceLevel}</p>
           <p>Training intensity : {intensity}</p>
-          <p>Estimated time needed(in minutes) : {intensity}</p>
+          <p>Time needed per week (in minutes) : {time}</p>
 
           <p>Proposed training plan</p>
 
