@@ -148,7 +148,15 @@ const Quiz = () => {
 
   return (
     <div className="container">
+
+
+
       <h1>Gym Quiz</h1>
+
+
+
+
+      <p></p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="goal">What is your training goal?</label>
@@ -165,6 +173,7 @@ const Quiz = () => {
             <option value="strengthBuilding">Strength Building</option>
           </select>
         </div>
+        <p></p>
         <div className="form-group">
           <label htmlFor="age">How old are you?</label>
           <input
@@ -176,6 +185,7 @@ const Quiz = () => {
             required
           />
         </div>
+        <p></p>
         <div className="form-group">
           <label htmlFor="gender">What is your gender?</label>
           <select
@@ -190,6 +200,7 @@ const Quiz = () => {
             <option value="female">Female</option>
           </select>
         </div>
+        <p></p>
         <div className="form-group">
           <label htmlFor="currentWeight">What is your current weight (in kg)?</label>
           <input
@@ -201,6 +212,7 @@ const Quiz = () => {
             required
           />
         </div>
+        <p></p>
         <div className="form-group">
           <label htmlFor="trained">Have you ever trained in the gym before?</label>
           <select
@@ -215,6 +227,7 @@ const Quiz = () => {
               <option value="no">No</option>
             </select>
         </div>
+        <p></p>
         <div className="form-group">
           <label htmlFor="trainingFrequency">How many training sessions per week do you want to have?</label>
           <input
@@ -226,6 +239,7 @@ const Quiz = () => {
             required
           />
         </div>
+        <p></p>
         <div className="form-group">
           <label htmlFor="trainingDuration">How long do you want your training sessions to last (in minutes)?</label>
           <input
@@ -237,6 +251,7 @@ const Quiz = () => {
             required
           />
         </div>
+        <p></p>
         <div className="form-group">
           <label htmlFor="muscleGroup">Which muscle group do you want to focus on the most?</label>
           <select
@@ -255,6 +270,7 @@ const Quiz = () => {
             <option value="abs">Abs</option>
           </select>
         </div>
+        <p></p>
         <div className="form-group">
           <label htmlFor="trainingIntensity">Do you want to have light or heavy training sessions?</label>
           <select
@@ -269,7 +285,8 @@ const Quiz = () => {
             <option value="heavy">Heavy</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">Submit your answers</button>
+        <p></p>
+        <button type="submit" className="btn btn-warning">Submit your answers</button>
       </form>
 
 

@@ -8,6 +8,7 @@ import Login from "./login/Login";
 import PrivateRoute from "./private_page/PrivatePage";
 import Register from "./registeer/Register";
 import BmiCalculator from "./calculator/Calculator";
+import Testoboost from "./testbooster/Testoboost";
 
 import Quiz from "./quiz/Quiz";
 
@@ -20,6 +21,7 @@ function App() {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/calculator" element={<BmiCalculator />}></Route>
       <Route path="/quiz" element={<Quiz />}></Route>
+      <Route path="/testbooster" element={<Testoboost />}></Route>
       <Route
         path="/aaa"
         element={
