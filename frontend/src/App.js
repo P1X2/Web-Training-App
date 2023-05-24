@@ -9,6 +9,7 @@ import PrivateRoute from "./private_page/PrivatePage";
 import Register from "./registeer/Register";
 import BmiCalculator from "./calculator/Calculator";
 import TrainingPlan from "./training_creator/TrainingCreator";
+import Plan from "./training_plan/Plan";
 
 function App() {
   // console.log(sendRequest("rest/auth//get?username=wojtek398", "GET"));
@@ -19,6 +20,7 @@ function App() {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/calculator" element={<BmiCalculator />}></Route>
       <Route path="/training_creator" element={<TrainingPlan />}></Route>
+      <Route path="/training_plan" element={<Plan />}></Route>
       <Route
         path="/aaa"
         element={
