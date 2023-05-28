@@ -5,12 +5,13 @@ import './thermometer.css';
 
 
 
+
 const Testoboost = () => {
   const opts = {
       height: '790',
       width: '1040',
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
     },
   };
 
@@ -21,7 +22,7 @@ const Testoboost = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setTemperature((prevTemperature) =>
-        prevTemperature >= 150 ? 0 : prevTemperature + 5
+        prevTemperature >= 150 ? 0 : prevTemperature + 7
 
       );
     }, 500);
@@ -43,25 +44,26 @@ const Testoboost = () => {
 
   return (
     <div class="container-fluid bg-secondary">
-        <div class="row fs-1 bg-danger">
+        <div class="row bg-danger py-1">
             <div class="col">
-            <h1 class="text-center">Goals </h1>
+            <h1 class="text-center fs-2">Goals </h1>
             </div>
 
             <div class="col">
-            <h1 class="text-center">Motivation </h1>
+            <h1 class="text-center fs-2">Motivation </h1>
             </div>
 
             <div class="col">
-            <h1 class="text-center">Success </h1>
+            <h1 class="text-center fs-2">Success </h1>
             </div>
         </div>
 
-        <p class="bg-warning"> </p>
-        <p class="bg-warning"> </p>
+        <p class=""></p>
 
-        <div class="row text-center text-decoration-underline ">
-            <h1>TOM PLATZ</h1>
+
+
+        <div class="row text-center text-decoration-underline py-3">
+            <h1 class="fs-1">TOM PLATZ</h1>
         </div>
 
        <p></p>
@@ -72,9 +74,10 @@ const Testoboost = () => {
             </div>
 
             <div class=" col text-center">
-                <p>Brak motywacji</p>
-                <p>Brak czasu</p>
-                <p>Ból</p>
+                <p>Lack of motivation</p>
+                <p>Lack of time</p>
+                <p>Pain </p>
+
 
                 <div className="container">
                       <div className="thermometer">
@@ -83,7 +86,7 @@ const Testoboost = () => {
                           style={{ height: `${temperature}%` }}
                         ></div>
                       </div>
-                      <div className="temperature fn-2"> Czujesz jak rośnie twoja motywacja?</div>
+                      <div className="temperature" class="fs-2 fw-bold"> Can you fell your motivation increasing?</div>
                     </div>
                 </div>
         </div>
@@ -92,37 +95,41 @@ const Testoboost = () => {
 
         <p></p>
 
-        <div class="row fs-2 text-right">
+        <div class="row fs-2 text-right mb-2">
 
-            <div class="col">
+            <div class="col-2">
             </div>
 
             <div class="col-9">
                  <p class="lh-sm fs-2 text-right">
-                            Tom Platz, ikona kulturystyki, jest prawdziwym przykładem determinacji, pasji i poświęcenia. Jego legendarne treningi i
-                            niesamowite osiągnięcia sprawiają, że jest inspiracją dla wielu osób na świecie.
+                    Tom Platz, a bodybuilding legend, is a true
+                    embodiment of determination, passion, and dedication. His legendary workouts and incredible achievements make him an inspiration to many around the world...
                  </p>
 
                 <p class="lh-sm">
-                Nieodłącznym elementem sylwetki Toma Plazza są jego niesamowite nogi. Ich rozwinięcie i definicja są bezprecedensowe w świecie kulturystyki.
-                Tom poświęcał wiele godzin na ciężkie treningi nóg, niezależnie od tego, jak wymagające były. To jest prawdziwy dowód na to, że sukces nie przychodzi łatwo - wymaga wysiłku,
-                wytrwałości i poświęcenia.
+                An inseparable part of Tom Platz's physique is his awe-inspiring legs. Their development and definition are unparalleled in the world of bodybuilding. Tom dedicated countless hours to grueling leg workouts,
+                no matter how tough they were. This serves as a testament that success doesn't come easy – it requires effort, perseverance, and sacrifice.
                 </p>
 
 
                 <p class="lh-sm">
-                    Przygotuj się na wyzwania i idź za swoimi celami, tak jak Tom Platz. Wielka siła rodzi się z determinacji i nieustannej pracy. Niech Tom Platz będzie Twoją inspiracją,
-                     aby pokonywać własne ograniczenia i osiągać nieosiągalne cele.
+                 Prepare yourself for the challenge and pursue your goals, just like Tom Platz. Great strength is born out of determination and unwavering effort.
+                  Let Tom Platz be your inspiration to surpass your own limitations and achieve the seemingly impossible.
                 </p>
-            </div>
-
-            <div class="col">
             </div>
 
         </div>
 
-        <div class="row">
+        <div class="row pt-3">
+            <div class="col">
+                <h1 class=" text-center text-danger pb-2 fs-1"> Still not convinced? </h1>
 
+                <p class="lh-sm fs-2 text-center" >
+                <span href="/login"><a class="" href="/login" class="text-danger">Register</a></span>  yourself and achieve it all by yourself!
+                </p>
+                <p class="lh-sm fs-3 text-center pb-3">Our team of coaches make miracles on daily basis - give yourself a chance to have better life</p>
+
+            </div>
       </div>
 
     </div>
