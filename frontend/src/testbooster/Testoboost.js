@@ -11,7 +11,7 @@ const Testoboost = () => {
       height: '790',
       width: '1040',
     playerVars: {
-      autoplay: 0,
+      autoplay: 1,
     },
   };
 
@@ -44,26 +44,10 @@ const Testoboost = () => {
 
   return (
     <div class="container-fluid bg-secondary">
-        <div class="row bg-danger py-1">
-            <div class="col">
-            <h1 class="text-center fs-2">Goals </h1>
-            </div>
-
-            <div class="col">
-            <h1 class="text-center fs-2">Motivation </h1>
-            </div>
-
-            <div class="col">
-            <h1 class="text-center fs-2">Success </h1>
-            </div>
-        </div>
-
-        <p class=""></p>
-
 
 
         <div class="row text-center text-decoration-underline py-3">
-            <h1 class="fs-1">TOM PLATZ</h1>
+            <h1 class="fs-1 pt-2">TOM PLATZ</h1>
         </div>
 
        <p></p>

@@ -147,170 +147,182 @@ const Quiz = () => {
 
 
   return (
-    <div className="container ">
+    <div className="container-fluid">
         <div class="row">
             <div class="col-sm">
-              <h1 class="text-center">Gym Quiz</h1>
+              <h1 class="text-center fs-1 pt-3">Gym Quiz</h1>
             </div>
 
-          </div>
-
-
-
-
-      <p></p>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="goal">What is your training goal?</label>
-          <select
-            className="form-control"
-            id="goal"
-            value={goal}
-            onChange={handleGoalChange}
-            required
-          >
-            <option value="">Select</option>
-            <option value="weightLoss">Weight Loss</option>
-            <option value="muscleGain">Muscle Gain</option>
-            <option value="strengthBuilding">Strength Building</option>
-          </select>
         </div>
-        <p></p>
-        <div className="form-group">
-          <label htmlFor="age">How old are you?</label>
-          <input
-            type="number"
-            className="form-control"
-            id="age"
-            value={age}
-            onChange={handleAgeChange}
-            required
-          />
+
+
+
+      <div class="row">
+            <div class="col-2">
+            </div>
+
+        <div class="col">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group pb-2">
+              <label htmlFor="goal">What is your training goal?</label>
+              <select
+                className="form-control"
+                id="goal"
+                value={goal}
+                onChange={handleGoalChange}
+                required
+              >
+                <option value="">Select</option>
+                <option value="weightLoss">Weight Loss</option>
+                <option value="muscleGain">Muscle Gain</option>
+                <option value="strengthBuilding">Strength Building</option>
+              </select>
+            </div>
+            <p></p>
+            <div className="form-group pb-2">
+              <label htmlFor="age">How old are you?</label>
+              <input
+                type="number"
+                className="form-control"
+                id="age"
+                value={age}
+                onChange={handleAgeChange}
+                required
+              />
+            </div>
+            <p></p>
+            <div className="form-group pb-2">
+              <label htmlFor="gender">What is your gender?</label>
+              <select
+                className="form-control"
+                id="gender"
+                value={gender}
+                onChange={handleGenderChange}
+                required
+              >
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <p></p>
+            <div className="form-group pb-2">
+              <label htmlFor="currentWeight">What is your current weight (in kg)?</label>
+              <input
+                type="number"
+                className="form-control"
+                id="currentWeight"
+                value={currentWeight}
+                onChange={handleCurrentWeightChange}
+                required
+              />
+            </div>
+            <p></p>
+            <div className="form-group pb-2">
+              <label htmlFor="trained">Have you ever trained in the gym before?</label>
+              <select
+                  className="form-control"
+                  id="trained"
+                  value={trained}
+                  onChange={handleTrainedChange}
+                  required
+                >
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+            </div>
+            <p></p>
+            <div className="form-group pb-2">
+              <label htmlFor="trainingFrequency">How many training sessions per week do you want to have?</label>
+              <input
+                type="number"
+                className="form-control"
+                id="trainingFrequency"
+                value={trainingFrequency}
+                onChange={handleTrainingFrequencyChange}
+                required
+              />
+            </div>
+            <p></p>
+            <div className="form-group pb-2">
+              <label htmlFor="trainingDuration">How long do you want your training sessions to last (in minutes)?</label>
+              <input
+                type="number"
+                className="form-control"
+                id="trainingDuration"
+                value={trainingDuration}
+                onChange={handleTrainingDurationChange}
+                required
+              />
+            </div>
+            <p></p>
+            <div className="form-group pb-2">
+              <label htmlFor="muscleGroup">Which muscle group do you want to focus on the most?</label>
+              <select
+                className="form-control"
+                id="muscleGroup"
+                value={muscleGroup}
+                onChange={handleMuscleGroupChange}
+                required
+              >
+                <option value="">Select</option>
+                <option value="chest">Chest</option>
+                <option value="back">Back</option>
+                <option value="legs">Legs</option>
+                <option value="shoulders">Shoulders</option>
+                <option value="arms">Arms</option>
+                <option value="abs">Abs</option>
+              </select>
+            </div>
+            <p></p>
+            <div className="form-group pb-2">
+              <label htmlFor="trainingIntensity">Do you want to have light or heavy training sessions?</label>
+              <select
+                className="form-control"
+                id="trainingIntensity"
+                value={trainingIntensity}
+                onChange={handleTrainingIntensityChange}
+                required
+              >
+                <option value="">Select</option>
+                <option value="light">Light</option>
+                <option value="heavy">Heavy</option>
+              </select>
+            </div>
+              <div class="row text-center py-5">
+                <button type="submit"  className="btn btn-warning btn-lg btn-block">Submit your answers</button>
+              </div>
+
+          </form>
+
+
+          {experienceLevel && (
+            <div className="mt-3">
+              <h4>Quiz Result</h4>
+              <p>Your Experience Score: {experienceScore}</p>
+              <p>Estimated experience level: {experienceLevel}</p>
+              <p>Training intensity : {intensity}</p>
+              <p>Time needed per week (in minutes) : {time}</p>
+
+              <p>Proposed training plan</p>
+
+
+
+
+
+              //proponowany plan treningowy
+
+
+            </div>
+          )}
         </div>
-        <p></p>
-        <div className="form-group">
-          <label htmlFor="gender">What is your gender?</label>
-          <select
-            className="form-control"
-            id="gender"
-            value={gender}
-            onChange={handleGenderChange}
-            required
-          >
-            <option value="">Select</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
+
+        <div class="col-2">
         </div>
-        <p></p>
-        <div className="form-group">
-          <label htmlFor="currentWeight">What is your current weight (in kg)?</label>
-          <input
-            type="number"
-            className="form-control"
-            id="currentWeight"
-            value={currentWeight}
-            onChange={handleCurrentWeightChange}
-            required
-          />
-        </div>
-        <p></p>
-        <div className="form-group">
-          <label htmlFor="trained">Have you ever trained in the gym before?</label>
-          <select
-              className="form-control"
-              id="trained"
-              value={trained}
-              onChange={handleTrainedChange}
-              required
-            >
-              <option value="">Select</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-        </div>
-        <p></p>
-        <div className="form-group">
-          <label htmlFor="trainingFrequency">How many training sessions per week do you want to have?</label>
-          <input
-            type="number"
-            className="form-control"
-            id="trainingFrequency"
-            value={trainingFrequency}
-            onChange={handleTrainingFrequencyChange}
-            required
-          />
-        </div>
-        <p></p>
-        <div className="form-group">
-          <label htmlFor="trainingDuration">How long do you want your training sessions to last (in minutes)?</label>
-          <input
-            type="number"
-            className="form-control"
-            id="trainingDuration"
-            value={trainingDuration}
-            onChange={handleTrainingDurationChange}
-            required
-          />
-        </div>
-        <p></p>
-        <div className="form-group">
-          <label htmlFor="muscleGroup">Which muscle group do you want to focus on the most?</label>
-          <select
-            className="form-control"
-            id="muscleGroup"
-            value={muscleGroup}
-            onChange={handleMuscleGroupChange}
-            required
-          >
-            <option value="">Select</option>
-            <option value="chest">Chest</option>
-            <option value="back">Back</option>
-            <option value="legs">Legs</option>
-            <option value="shoulders">Shoulders</option>
-            <option value="arms">Arms</option>
-            <option value="abs">Abs</option>
-          </select>
-        </div>
-        <p></p>
-        <div className="form-group">
-          <label htmlFor="trainingIntensity">Do you want to have light or heavy training sessions?</label>
-          <select
-            className="form-control"
-            id="trainingIntensity"
-            value={trainingIntensity}
-            onChange={handleTrainingIntensityChange}
-            required
-          >
-            <option value="">Select</option>
-            <option value="light">Light</option>
-            <option value="heavy">Heavy</option>
-          </select>
-        </div>
-        <p></p>
-        <button type="submit" className="btn btn-warning">Submit your answers</button>
-      </form>
 
+      </div>
 
-      {experienceLevel && (
-        <div className="mt-3">
-          <h4>Quiz Result</h4>
-          <p>Your Experience Score: {experienceScore}</p>
-          <p>Estimated experience level: {experienceLevel}</p>
-          <p>Training intensity : {intensity}</p>
-          <p>Time needed per week (in minutes) : {time}</p>
-
-          <p>Proposed training plan</p>
-
-
-
-
-
-          //proponowany plan treningowy
-
-
-        </div>
-      )}
     </div>
   );
 };
