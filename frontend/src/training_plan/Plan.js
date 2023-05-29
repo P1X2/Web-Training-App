@@ -44,11 +44,14 @@ function Plan() {
                               <Col key={exercise.id} xs={12} md={6} lg={4}>
                                 <Card key={exercise.id} className="mb-3">
                                   <Card.Body>
-                                    <Card.Title>
+                                    <Card.Title class="text-uppercase fs-3 pb-2">
                                       {capitalizeFirstLetter(exercise.name)}
                                     </Card.Title>
                                     <Card.Text>Reps: {exercise.reps}</Card.Text>
                                     <Card.Text>Weight: {exercise.weight}</Card.Text>
+                                       <Card.Text>
+                                          Muscle Group: {exercise.muscleGroup}
+                                       </Card.Text>
                                     <Card.Text>
                                       {" "}
                                       <a
@@ -59,9 +62,9 @@ function Plan() {
                                         Tutorial Video
                                       </a>
                                     </Card.Text>
-                                    <Card.Text>
-                                      Muscle Group: {exercise.muscleGroup}
-                                    </Card.Text>
+
+
+
                                   </Card.Body>
                                 </Card>
                               </Col>
