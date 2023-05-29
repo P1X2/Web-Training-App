@@ -26,60 +26,71 @@ const Login = () => {
   }
 
   return (
-    <>
-      <Container className="mt-3">
-        <Form.Group className="mb-3">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            className="sm-2 w-50"
-            type="username"
-            id="username"
-            placeholder="Enter username"
-            value={username}
-            onChange={(usernameEvent) =>
-              setUsername(usernameEvent.target.value)
-            }
-          />
-        </Form.Group>
-        <Form.Group className="mb-3 w-50">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(passwordEvent) =>
-              setPassword(passwordEvent.target.value)
-            }
-          />
-        </Form.Group>
-        <Row>
-          <Col>
-            <Button
-              className="m-2"
-              size="lg"
-              id="submit"
-              type="button"
-              onClick={() => sendLoginRequest()}
-              variant="success"
-            >
-              Login
-            </Button>
-            <Button
-              className="m-3"
-              onClick={() => window.location.href = "/register"}
-              size="lg"
-              id="submit"
-              type="button"
-              color="Dark"
-            >
-              Register
-              
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-    </>
+  <div class="container-fluid">
+      <div class="row pt-4">
+        <div class="col-4">
+            <p></p>
+        </div>
+
+        <div class="col">
+          <Container className="mt-3">
+            <Form.Group className="mb-3">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                className="sm-2 w-50"
+                type="username"
+                id="username"
+                placeholder="Enter username"
+                value={username}
+                onChange={(usernameEvent) =>
+                  setUsername(usernameEvent.target.value)
+                }
+              />
+            </Form.Group>
+            <Form.Group className="mb-3 w-50">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(passwordEvent) =>
+                  setPassword(passwordEvent.target.value)
+                }
+              />
+            </Form.Group>
+            <Row>
+              <Col>
+                <Button
+                  className="m-2"
+                  size="lg"
+                  id="submit"
+                  type="button"
+                  onClick={() => sendLoginRequest()}
+                  variant="success"
+                >
+                  Login
+                </Button>
+                <Button
+                  className="m-3"
+                  onClick={() => window.location.href = "/register"}
+                  size="lg"
+                  id="submit"
+                  type="button"
+                  color="Dark"
+                >
+                  Register
+                </Button>
+              </Col>
+            </Row>
+
+
+          </Container>
+
+
+        </div>
+      </div>
+  </div>
   );
 };
 

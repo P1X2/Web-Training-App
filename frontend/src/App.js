@@ -8,6 +8,9 @@ import Login from "./login/Login";
 import PrivateRoute from "./private_page/PrivatePage";
 import Register from "./registeer/Register";
 import BmiCalculator from "./calculator/Calculator";
+import Testoboost from "./testbooster/Testoboost";
+
+import Quiz from "./quiz/Quiz";
 import TrainingPlan from "./training_creator/TrainingCreator";
 import Plan from "./training_plan/Plan";
 
@@ -19,6 +22,8 @@ function App() {
       <Route path="/" element={<Home />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/calculator" element={<BmiCalculator />}></Route>
+      <Route path="/quiz" element={<Quiz />}></Route>
+      <Route path="/testbooster" element={<Testoboost />}></Route>
       <Route path="/training_creator" element={<TrainingPlan />}></Route>
       <Route path="/training_plan" element={<Plan />}></Route>
       <Route
