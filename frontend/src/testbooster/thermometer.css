@@ -1,0 +1,22 @@
+.thermometer {
+  width: 70px;
+  height: 300px;
+  background-color: #eee;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.thermometer-mercury {
+  width: 100%;
+  background-color: #ff0000;
+  position: absolute;
+  bottom: 0;
+  transition: height 0.5s ease-in-out;
+}
+
+.temperature {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+}
