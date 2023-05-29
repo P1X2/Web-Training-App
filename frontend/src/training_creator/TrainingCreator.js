@@ -114,7 +114,7 @@ function TrainingPlan() {
   return (
     <div className="my-5 container-fluid">
         <div class="row text-center ">
-          <h1 class="display-1 fw-semibold">Training Plan Generator</h1>
+          <h1 class="display-1 fw-semibold">Training Plan Creator</h1>
         </div>
 
 
