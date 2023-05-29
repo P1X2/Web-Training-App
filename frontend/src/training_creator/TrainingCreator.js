@@ -13,27 +13,21 @@ function TrainingPlan() {
   const [tutorialUrl, setTutorialUrl] = useState("");
   const [muscleGroup, setMuscleGroup] = useState("");
 
-  
-  const muscleGroups = [
-    "LEGS",
-    "ARMS",
-    "BACK",
-    "CHEST",
-    "ABS"];
-
+  const muscleGroups = ["LEGS", "ARMS", "BACK", "CHEST", "ABS"];
 
   useEffect(() => {
     fetchExercises();
   }, []);
 
   const fetchExercises = () => {
-    sendRequest("rest/exercise/blank/get/all", "GET", "").then((data) => {
-      setExercises(data);
-    }).catch((error) => {
-      console.error("Error occurred while fetching exercises", error);
-    });
+    sendRequest("rest/exercise/blank/get/all", "GET", "")
+      .then((data) => {
+        setExercises(data);
+      })
+      .catch((error) => {
+        console.error("Error occurred while fetching exercises", error);
+      });
   };
-
 
   const addExercise = async (event) => {
     event.preventDefault();
@@ -49,7 +43,7 @@ function TrainingPlan() {
       alert("Please fill all exercise details.");
       return;
     }
-  
+
     const exercise = {
       name: exerciseName,
       minReps: minReps,
@@ -60,12 +54,10 @@ function TrainingPlan() {
       muscleGroup: muscleGroup,
     };
 
-
-  
     //try {
     try {
       sendRequest("rest/exercise/blank/create", "POST", null, exercise);
-  
+
       //fetchExercises(); // Fetch the updated exercise list from the server
       setExerciseName("");
       setMinReps("");
@@ -80,7 +72,6 @@ function TrainingPlan() {
     }
     fetchExercises();
   };
-    
 
   //     if (response) {
   //       const savedExercise = response;
@@ -100,13 +91,14 @@ function TrainingPlan() {
   //   }
   // };
 
-
-  
   const deleteExercise = async (index) => {
     const exerciseId = exercises[index].id;
     try {
-      const response = await sendRequest(`rest/exercise/${exerciseId}`, "DELETE");
-  
+      const response = await sendRequest(
+        `rest/exercise/${exerciseId}`,
+        "DELETE"
+      );
+
       if (response) {
         const updatedExercises = [...exercises];
         updatedExercises.splice(index, 1);
@@ -184,7 +176,7 @@ function TrainingPlan() {
               onChange={(event) => setTutorialUrl(event.target.value)}
               required
             />
-          </Form.Group>             
+          </Form.Group>
 
           <div>
             <label htmlFor="muscleGroup">Muscle Group:</label>
@@ -218,41 +210,45 @@ function TrainingPlan() {
       </div>
 
       {exercises.length > 0 ? (
-      <div className="my-5">
-        <h2>Exercise List</h2>
-        <ListGroup>
-          {exercises.map((exercise, index) => (
-            <ListGroup.Item key={index}>
-              <div className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h3>{exercise.name}</h3>
-                  <p>
-                    Reps: {exercise.minReps} - {exercise.maxReps}
-                    <br />
-                    Weight: {exercise.minWeight}kg - {exercise.maxWeight}kg
-                    <br />
-                    Muscle Group: {exercise.muscleGroup}
-                  </p>
-                </div>
-                <div>
-                
-                   <a href={exercise.videoUrl} target="_blank" rel="noopener noreferrer">Tutorial Video</a>
-                
-                  <Button
-                    variant="danger"
-                    className="ms-3"
-                    onClick={() => deleteExercise(index)}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              </div>
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      </div>
-) : null}
+        <div className="my-5">
+          <h2>Exercise List</h2>
+          <ListGroup>
+            {exercises.map((exercise, index) => (
+              <ListGroup.Item key={index}>
+                <div className="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h3>{exercise.name}</h3>
+                    <p>
+                      Reps: {exercise.minReps} - {exercise.maxReps}
+                      <br />
+                      Weight: {exercise.minWeight}kg - {exercise.maxWeight}kg
+                      <br />
+                      Muscle Group: {exercise.muscleGroup}
+                    </p>
+                  </div>
+                  <div>
+                    <a
+                      href={exercise.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Tutorial Video
+                    </a>
 
+                    <Button
+                      variant="danger"
+                      className="ms-3"
+                      onClick={() => deleteExercise(index)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </div>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </div>
+      ) : null}
     </Container>
   );
 }
