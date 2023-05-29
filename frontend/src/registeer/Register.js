@@ -41,7 +41,7 @@ const Register = () => {
 
   return (
   <div class="row pt-4">
-    <div class="col-4">
+    <div class="col-3">
     </div>
 
 
@@ -49,6 +49,8 @@ const Register = () => {
         <div class="">
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
+
+
               <Form.Group as={Col} md="4" controlId="validationCustomUsername">
                 <Form.Label>Username</Form.Label>
                 <InputGroup hasValidation>
@@ -66,6 +68,8 @@ const Register = () => {
                   </Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>
+
+
               <Form.Group as={Col} md="4" controlId="validationCustom01">
                 <Form.Label>Gender</Form.Label>
                 <Form.Select
@@ -73,7 +77,7 @@ const Register = () => {
                   value={gender}
                   onChange={(e) => setGender(e.currentTarget.value)}
                 >
-                  <option>Open select menu</option>
+                  <option>Choose gender</option>
                   <option value="male">male</option>
                   <option value="female">female</option>
                   onChange={(event) => setGender(event.target.value)}
@@ -81,6 +85,8 @@ const Register = () => {
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
             </Row>
+
+
             <Form.Group as={Col} md="4" controlId="validationCustomPassword">
               <Form.Label>Password</Form.Label>
               <InputGroup hasValidation>
