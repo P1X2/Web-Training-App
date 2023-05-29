@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
+import { Container, Button, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useLocalState } from "../util/useLocalStorage";
 import sendRequest from "../util/ajax";
 
@@ -41,6 +41,7 @@ const Register = () => {
 
   return (
     <>
+    <Container>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col} md="4" controlId="validationCustomUsername">
@@ -105,6 +106,7 @@ const Register = () => {
         </Button>
         <a href="login"> Login</a>
       </Form>
+      </Container>
     </>
   );
 };
