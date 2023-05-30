@@ -73,43 +73,7 @@ function TrainingPlan() {
     fetchExercises();
   };
 
-  //     if (response) {
-  //       const savedExercise = response;
-  //       setExercises([...exercises, savedExercise]);
-  //       setExerciseName("");
-  //       setMinReps("");
-  //       setMaxReps("");
-  //       setMaxWeight("");
-  //       setMinWeight("");
-  //       setTutorialUrl("");
-  //       setMuscleGroup("");
-  //     } else {
-  //       console.error("Failed to save exercise");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error occurred while saving exercise", error);
-  //   }
-  // };
 
-  const deleteExercise = async (index) => {
-    const exerciseId = exercises[index].id;
-    try {
-      const response = await sendRequest(
-        `rest/exercise/${exerciseId}`,
-        "DELETE"
-      );
-
-      if (response) {
-        const updatedExercises = [...exercises];
-        updatedExercises.splice(index, 1);
-        setExercises(updatedExercises);
-      } else {
-        console.error("Failed to delete exercise");
-      }
-    } catch (error) {
-      console.error("Error occurred while deleting exercise", error);
-    }
-  };
 
   return (
     <Container className="my-5">
@@ -149,21 +113,21 @@ function TrainingPlan() {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>Maximal Weight</Form.Label>
-            <Form.Control
-              type="number"
-              value={maxWeight}
-              onChange={(event) => setMaxWeight(event.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
             <Form.Label>Minimal Weight</Form.Label>
             <Form.Control
               type="number"
               value={minWeight}
               onChange={(event) => setMinWeight(event.target.value)}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Maximal Weight</Form.Label>
+            <Form.Control
+              type="number"
+              value={maxWeight}
+              onChange={(event) => setMaxWeight(event.target.value)}
               required
             />
           </Form.Group>
@@ -235,13 +199,6 @@ function TrainingPlan() {
                       Tutorial Video
                     </a>
 
-                    <Button
-                      variant="danger"
-                      className="ms-3"
-                      onClick={() => deleteExercise(index)}
-                    >
-                      Delete
-                    </Button>
                   </div>
                 </div>
               </ListGroup.Item>
