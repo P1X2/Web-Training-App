@@ -9,6 +9,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [jwt, setJwt] = useLocalState("", "jwt");
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const [validated, setValidated] = useState(false);
 
@@ -29,12 +30,16 @@ const Register = () => {
       password: password,
     };
     console.log(requestBody);
-    sendRequest("rest/auth/register", "POST", null, requestBody).then(
+    sendRequest("rest/auth/register", "POST", null, requestBody)
+    .then(
       (response) => {
         console.log(response);
         window.location.href = "login";
       }
-    );
+    )
+    .catch((message) => {
+      setErrorMsg("can not register")
+    });
     //   .catch((errorResponse) => {
     //     alert(errorResponse);});
   }
@@ -73,7 +78,6 @@ const Register = () => {
                   value={gender}
                   onChange={(e) => setGender(e.currentTarget.value)}
                 >
-                  <option>Open select menu</option>
                   <option value="male">male</option>
                   <option value="female">female</option>
                   onChange={(event) => setGender(event.target.value)}
@@ -106,6 +110,17 @@ const Register = () => {
                 feedbackType="invalid"
               />
             </Form.Group>
+            {errorMsg ? (
+              <Row className="mb-4">
+                <Col md="8" lg="6">
+                  <div className="" style={{ color: "red", fontWeight: "bold" }}>
+                    {errorMsg}
+                  </div>
+                </Col>
+              </Row>
+            ) : (
+              <></>
+            )}
             <Button type="submit" size="lg" onClick={() => sendRegistrationRequest()}>
               Register
             </Button>
