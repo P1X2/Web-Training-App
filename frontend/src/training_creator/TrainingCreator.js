@@ -3,6 +3,12 @@ import { Container, Form, Button, ListGroup } from "react-bootstrap";
 import { useLocalState } from "../util/useLocalStorage";
 import sendRequest from "../util/ajax";
 
+
+
+
+
+
+
 function TrainingPlan() {
   const [exercises, setExercises] = useState([]);
   const [exerciseName, setExerciseName] = useState("");

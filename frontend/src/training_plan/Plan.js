@@ -2,6 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
 import { useLocalState } from "../util/useLocalStorage";
 import sendRequest from "../util/ajax";
+import YouTube from 'react-youtube';
+
+
+                                     /* <a class="text-secondary" href={exercise.videoUrl} target="_blank" rel="noopener noreferrer">
+                                        Tutorial Video
+                                      </a>*/
+const opts = {
+      height: '300',
+      width: '320',
+    playerVars: {
+      autoplay: 0,
+        },
+}
+
+  const getVideoId = (videoUrl) => {
+    const urlParams = new URLSearchParams(new URL(videoUrl).search);
+    return urlParams.get('v');
+  };
 
 function Plan() {
   const [plan, setPlan] = useLocalState("", "plan");
@@ -42,27 +60,24 @@ function Plan() {
                           <Row>
                             {plan.exercises.map((exercise) => (
                               <Col key={exercise.id} xs={12} md={6} lg={4}>
-                                <Card key={exercise.id} className="mb-3">
+                                <Card key={exercise.id} className="mb-3 border-dark">
                                   <Card.Body>
-                                    <Card.Title class="text-uppercase fs-3 pb-2">
+                                    <div class="card-title text-center mb-2 text-uppercase fs-3 pb-2">
                                       {capitalizeFirstLetter(exercise.name)}
-                                    </Card.Title>
-                                    <Card.Text>Reps: {exercise.reps}</Card.Text>
-                                    <Card.Text>Weight: {exercise.weight}</Card.Text>
-                                       <Card.Text>
+                                    </div>
+                                    <Card.Text class="fs-5">Reps: {exercise.reps}</Card.Text>
+                                    <Card.Text class="fs-5">Weight: {exercise.weight}</Card.Text>
+                                       <Card.Text class="fs-5">
                                           Muscle Group: {exercise.muscleGroup}
                                        </Card.Text>
-                                    <Card.Text>
+                                    <Card.Text class="display-5">
                                       {" "}
-                                      <a
-                                        href={exercise.videoUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                      >
-                                        Tutorial Video
-                                      </a>
-                                    </Card.Text>
+                                        <p class="text-center">Tutorial</p>
 
+                                    </Card.Text>
+                                    <div class="text-center">
+                                        <YouTube videoId={getVideoId(exercise.videoUrl)} opts={opts} />
+                                    </div>
 
 
                                   </Card.Body>
