@@ -9,8 +9,8 @@ import YouTube from 'react-youtube';
                                         Tutorial Video
                                       </a>*/
 const opts = {
-      height: '300',
-      width: '320',
+      height: '200',
+      width: '90%',
     playerVars: {
       autoplay: 0,
         },
@@ -66,7 +66,7 @@ function Plan() {
                                       {capitalizeFirstLetter(exercise.name)}
                                     </div>
                                     <Card.Text class="fs-5">Reps: {exercise.reps}</Card.Text>
-                                    <Card.Text class="fs-5">Weight: {exercise.weight}</Card.Text>
+                                    <Card.Text class="fs-5">Weight: {exercise.weight}kg</Card.Text>
                                        <Card.Text class="fs-5">
                                           Muscle Group: {exercise.muscleGroup}
                                        </Card.Text>

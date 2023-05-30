@@ -63,9 +63,9 @@ const Login = () => {
               />
             </Form.Group>
             <Row>
-              <Col>
+              <Col class="">
                 <Button
-                  className="m-2"
+                  className="my-3"
                   size="lg"
                   id="submit"
                   type="button"
@@ -74,17 +74,11 @@ const Login = () => {
                 >
                   Login
                 </Button>
-                <Button
-                  className="m-3"
-                  onClick={() => window.location.href = "/register"}
-                  size="lg"
-                  id="submit"
-                  type="button"
-                  color="Dark"
-                >
-                  Register
-                </Button>
+
+                    <a class="text-secondary fs-4 fw-semibold mx-5 text-decoration-none" href="/register">Register</a>
+
               </Col>
+
             </Row>
 
 

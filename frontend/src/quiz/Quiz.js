@@ -311,7 +311,7 @@ const Quiz = () => {
 
           {experienceLevel && (
             <div className="mt-3 fs-5">
-              <h1 class="pb-3 text-center">Quiz Result</h1>
+              <h1 class="pb-3 text-center display-4">Quiz Result</h1>
               <p>Your Experience Score: {experienceScore}</p>
               <p>Estimated experience level: {experienceLevel}</p>
               <p>Training intensity : {intensity}</p>
