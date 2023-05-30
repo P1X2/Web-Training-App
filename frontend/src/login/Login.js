@@ -27,7 +27,10 @@ const Login = () => {
 
   return (
   <div class="container-fluid">
-      <div class="row pt-4">
+       <div class="row my-3">
+            <div class="display-2 fw-semibold text-center">Login</div>
+       </div>
+      <div class="row pt-1">
         <div class="col-4">
             <p></p>
         </div>

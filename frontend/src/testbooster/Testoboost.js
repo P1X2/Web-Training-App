@@ -11,7 +11,7 @@ const Testoboost = () => {
       height: '790',
       width: '1040',
     playerVars: {
-      autoplay: 0,
+      autoplay: 1,
     },
   };
 
