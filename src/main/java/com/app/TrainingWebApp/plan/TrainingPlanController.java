@@ -21,9 +21,14 @@ public class TrainingPlanController {
         @RequestBody TrainingPlanCreateRequest request,
         @AuthenticationPrincipal User user
     ){
-        return trainingPlanService.createTrainingPlan(request,user).getId();
+        try {
+            return trainingPlanService.createTrainingPlan(request, user).getId();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
     }
-
 
 
     @GetMapping("/get")
