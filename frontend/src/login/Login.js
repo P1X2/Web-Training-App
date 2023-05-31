@@ -8,6 +8,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [jwt, setJwt] = useLocalState("", "jwt");
+  const [errorMsg, setErrorMsg] = useState(null);
   function sendLoginRequest() {
     const requestBody = {
       username: username,
@@ -21,8 +22,8 @@ const Login = () => {
         window.location.href = "/aaa";
       })
       .catch((message) => {
-        alert(message);
-      });
+        setErrorMsg("Invalid username or password");
+        });
   }
 
   return (
@@ -62,6 +63,17 @@ const Login = () => {
                 }
               />
             </Form.Group>
+            {errorMsg ? (
+              <Row className="mb-4">
+                <Col md="8" lg="6">
+                  <div className="" style={{ color: "red", fontWeight: "bold" }}>
+                    {errorMsg}
+                  </div>
+                </Col>
+              </Row>
+            ) : (
+            <></>
+            )}
             <Row>
               <Col>
                 <Button
