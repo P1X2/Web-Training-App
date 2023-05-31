@@ -79,107 +79,135 @@ function TrainingPlan() {
     fetchExercises();
   };
 
+  //     if (response) {
+  //       const savedExercise = response;
+  //       setExercises([...exercises, savedExercise]);
+  //       setExerciseName("");
+  //       setMinReps("");
+  //       setMaxReps("");
+  //       setMaxWeight("");
+  //       setMinWeight("");
+  //       setTutorialUrl("");
+  //       setMuscleGroup("");
+  //     } else {
+  //       console.error("Failed to save exercise");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error occurred while saving exercise", error);
+  //   }
+  // };
 
+  const deleteExercise = async (index) => {
+    const exerciseId = exercises[index].id;
+    try {
+      const response = await sendRequest(
+        `rest/exercise/${exerciseId}`,
+        "DELETE"
+      );
+
+      if (response) {
+        const updatedExercises = [...exercises];
+        updatedExercises.splice(index, 1);
+        setExercises(updatedExercises);
+      } else {
+        console.error("Failed to delete exercise");
+      }
+    } catch (error) {
+      console.error("Error occurred while deleting exercise", error);
+    }
+  };
 
   return (
-    <Container className="my-5">
-      <h1>Training Plan</h1>
-
-      <div className="my-5">
-        <h2>Add Exercise</h2>
-        <Form onSubmit={addExercise}>
-          <Form.Group className="mb-3">
-            <Form.Label>Exercise Name</Form.Label>
-            <Form.Control
-              type="text"
-              value={exerciseName}
-              onChange={(event) => setExerciseName(event.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label>Minimal Number of Repetitions</Form.Label>
-            <Form.Control
-              type="number"
-              value={minReps}
-              onChange={(event) => setMinReps(event.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label>Maximal Number of Repetitions</Form.Label>
-            <Form.Control
-              type="number"
-              value={maxReps}
-              onChange={(event) => setMaxReps(event.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label>Minimal Weight</Form.Label>
-            <Form.Control
-              type="number"
-              value={minWeight}
-              onChange={(event) => setMinWeight(event.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label>Maximal Weight</Form.Label>
-            <Form.Control
-              type="number"
-              value={maxWeight}
-              onChange={(event) => setMaxWeight(event.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label>Tutorial Video URL</Form.Label>
-            <Form.Control
-              type="text"
-              value={tutorialUrl}
-              onChange={(event) => setTutorialUrl(event.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <div>
-            <label htmlFor="muscleGroup">Muscle Group:</label>
-            <select
-              id="muscleGroup"
-              value={muscleGroup}
-              onChange={(event) => setMuscleGroup(event.target.value)}
-            >
-              <option value="">Select a muscle group</option>
-              {muscleGroups.map((group) => (
-                <option key={group} value={group}>
-                  {group}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* <Form.Group className="mb-3">
-            <Form.Label>Muscle Group</Form.Label>
-            <Form.Control
-              type="text"
-              value={muscleGroup}
-              onChange={(event) => setMuscleGroup(event.target.value)}
-              required
-            />
-          </Form.Group> */}
-          <Button variant="primary" type="submit">
-            Add Exercise
-          </Button>
-        </Form>
-      </div>
+    <div className="my-5 container-fluid">
+        <div class="row text-center ">
+          <h1 class="display-1 fw-semibold">Training Plan Creator</h1>
+        </div>
 
 
+
+        <div class="row">
+
+            <div class="col-1"></div>
+
+            <div class="col">
+              <div className="my-5">
+                <h2 class="display-4 mb-3 text-center">Add Exercise</h2>
+                <Form onSubmit={addExercise}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Exercise Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={exerciseName}
+                      onChange={(event) => setExerciseName(event.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Minimal Number of Repetitions</Form.Label>
+                    <Form.Control
+                      type="number"
+                      value={minReps}
+                      onChange={(event) => setMinReps(event.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Maximal Number of Repetitions</Form.Label>
+                    <Form.Control
+                      type="number"
+                      value={maxReps}
+                      onChange={(event) => setMaxReps(event.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Maximal Weight</Form.Label>
+                    <Form.Control
+                      type="number"
+                      value={maxWeight}
+                      onChange={(event) => setMaxWeight(event.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Minimal Weight</Form.Label>
+                    <Form.Control
+                      type="number"
+                      value={minWeight}
+                      onChange={(event) => setMinWeight(event.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Tutorial Video URL</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={tutorialUrl}
+                      onChange={(event) => setTutorialUrl(event.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <div>
+                    <label htmlFor="muscleGroup">Muscle Group:</label>
+                    <select
+                      className="form-control"
+                      id="muscleGroup"
+                      value={muscleGroup}
+                      onChange={(event) => setMuscleGroup(event.target.value)}
+                    >
+                      <option value="">Select a muscle group</option>
+                      {muscleGroups.map((group) => (
+                        <option key={group} value={group}>
+                          {group}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   {/* <Form.Group className="mb-3">
