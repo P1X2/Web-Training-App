@@ -67,17 +67,7 @@ const Quiz = () => {
     let time = 0;
     //wiek war
     if (age < 18) {
-      alert("You can use this service only if you are older than 18");
-      return;
-        }
-
-    if (currentWeight <=40) {
-      alert("Invalid weight - you need to weight at least 40kg to use our services");
-      return;
-        }
-
-    if (trainingDuration<=20 || trainingFrequency<=0) {
-      alert("Invalid input - check your answers");
+      alert("You can use this utility only if you are older than 18");
       return;
         }
     // wiek points
@@ -160,7 +150,7 @@ const Quiz = () => {
     <div className="container-fluid">
         <div class="row">
             <div class="col-sm">
-              <h1 class="text-center pt-3 display-2">Gym Quiz</h1>
+              <h1 class="text-center fs-1 pt-3">Gym Quiz</h1>
             </div>
 
         </div>
@@ -182,7 +172,7 @@ const Quiz = () => {
                 onChange={handleGoalChange}
                 required
               >
-                <option value="">Select training goal</option>
+                <option value="">Select</option>
                 <option value="weightLoss">Weight Loss</option>
                 <option value="muscleGain">Muscle Gain</option>
                 <option value="strengthBuilding">Strength Building</option>
@@ -191,7 +181,6 @@ const Quiz = () => {
             <p></p>
             <div className="form-group pb-2">
               <label htmlFor="age">How old are you?</label>
-
               <input
                 type="number"
                 className="form-control"
@@ -211,7 +200,7 @@ const Quiz = () => {
                 onChange={handleGenderChange}
                 required
               >
-                <option value="">Select gender</option>
+                <option value="">Select</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
@@ -238,7 +227,7 @@ const Quiz = () => {
                   onChange={handleTrainedChange}
                   required
                 >
-                  <option value="">Select answer</option>
+                  <option value="">Select</option>
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
@@ -259,7 +248,6 @@ const Quiz = () => {
             <div className="form-group pb-2">
               <label htmlFor="trainingDuration">How long do you want your training sessions to last (in minutes)?</label>
               <input
-                placeholder="Must be grater than 20min"
                 type="number"
                 className="form-control"
                 id="trainingDuration"
@@ -278,7 +266,7 @@ const Quiz = () => {
                 onChange={handleMuscleGroupChange}
                 required
               >
-                <option value="">Select prio muscle group</option>
+                <option value="">Select</option>
                 <option value="chest">Chest</option>
                 <option value="back">Back</option>
                 <option value="legs">Legs</option>
@@ -297,7 +285,7 @@ const Quiz = () => {
                 onChange={handleTrainingIntensityChange}
                 required
               >
-                <option value="">Select intensity</option>
+                <option value="">Select</option>
                 <option value="light">Light</option>
                 <option value="heavy">Heavy</option>
               </select>
@@ -310,8 +298,8 @@ const Quiz = () => {
 
 
           {experienceLevel && (
-            <div className="mt-3 fs-5">
-              <h1 class="pb-3 text-center">Quiz Result</h1>
+            <div className="mt-3">
+              <h4>Quiz Result</h4>
               <p>Your Experience Score: {experienceScore}</p>
               <p>Estimated experience level: {experienceLevel}</p>
               <p>Training intensity : {intensity}</p>

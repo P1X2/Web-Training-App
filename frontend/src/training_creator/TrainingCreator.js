@@ -3,12 +3,6 @@ import { Container, Form, Button, ListGroup } from "react-bootstrap";
 import { useLocalState } from "../util/useLocalStorage";
 import sendRequest from "../util/ajax";
 
-
-
-
-
-
-
 function TrainingPlan() {
   const [exercises, setExercises] = useState([]);
   const [exerciseName, setExerciseName] = useState("");
@@ -179,76 +173,40 @@ function TrainingPlan() {
         </Form>
       </div>
 
+      {exercises.length > 0 ? (
+        <div className="my-5">
+          <h2>Exercise List</h2>
+          <ListGroup>
+            {exercises.map((exercise, index) => (
+              <ListGroup.Item key={index}>
+                <div className="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h3>{exercise.name}</h3>
+                    <p>
+                      Reps: {exercise.minReps} - {exercise.maxReps}
+                      <br />
+                      Weight: {exercise.minWeight}kg - {exercise.maxWeight}kg
+                      <br />
+                      Muscle Group: {exercise.muscleGroup}
+                    </p>
+                  </div>
+                  <div>
+                    <a
+                      href={exercise.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Tutorial Video
+                    </a>
 
                   </div>
-
-                  {/* <Form.Group className="mb-3">
-                    <Form.Label>Muscle Group</Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={muscleGroup}
-                      onChange={(event) => setMuscleGroup(event.target.value)}
-                      required
-                    />
-                  </Form.Group> */}
-                  <Button type="submit"  className="btn btn-warning btn-lg btn-block mt-4">
-                    Add Exercise
-                  </Button>
-                </Form>
-              </div>
-            </div>
-
-            <div class="col-1"></div>
-        </div>
-
-
-
-      {exercises.length > 0 ? (
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col">
-                  <h2 class="text-center display-3">Exercise List</h2>
-                  <ListGroup>
-                    {exercises.map((exercise, index) => (
-                      <ListGroup.Item key={index}>
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div>
-                            <h3 class="text-uppercase">{exercise.name}</h3>
-                            <p>
-                              Reps: {exercise.minReps} - {exercise.maxReps}
-                              <br />
-                              Weight: {exercise.minWeight}kg - {exercise.maxWeight}kg
-                              <br />
-                              Muscle Group: {exercise.muscleGroup}
-                            </p>
-                          </div>
-                          <div>
-                            <a
-                              href={exercise.videoUrl}
-                              target="_blank"
-                              class="text-secondary"
-                              rel="noopener noreferrer"
-                            >
-                              Tutorial Video
-                            </a>
-
-                            <Button
-                              variant="danger"
-                              className="ms-3"
-                              onClick={() => deleteExercise(index)}
-                            >
-                              Delete
-                            </Button>
-                          </div>
-                        </div>
-                      </ListGroup.Item>
-                    ))}
-                  </ListGroup>
-            </div>
-            <div class="col-1"></div>
+                </div>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
         </div>
       ) : null}
-    </div>
+    </Container>
   );
 }
 
