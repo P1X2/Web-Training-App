@@ -38,6 +38,10 @@ public class ExerciseService {
         ){
             throw new IllegalArgumentException("request is wrong");
         }
+        exerciseBlankRepository.findByName(request.getName()).ifPresent(exercise->{
+            throw new IllegalArgumentException("exercise already exists");
+        });
+
         ExerciseBlank exerciseBlank = ExerciseBlank
                 .builder()
                 .name(request.getName())
