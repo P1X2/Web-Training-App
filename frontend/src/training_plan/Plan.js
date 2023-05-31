@@ -10,7 +10,7 @@ import YouTube from 'react-youtube';
                                       </a>*/
 const opts = {
       height: '300',
-      width: '320',
+      width: '90%',
     playerVars: {
       autoplay: 0,
         },
