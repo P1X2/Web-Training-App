@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import sendRequest from "../util/ajax";
 import { useLocalState } from "../util/useLocalStorage";
-
 const Login = () => {
   //"" is default value in useState function
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [jwt, setJwt] = useLocalState("", "jwt");
+  const [errorMsg, setErrorMsg] = useState(null);
   function sendLoginRequest() {
     const requestBody = {
       username: username,
       password: password,
     };
-
     sendRequest("rest/auth/login", "POST", "", requestBody)
       .then((data) => {
         console.log(data);
@@ -21,20 +20,18 @@ const Login = () => {
         window.location.href = "/aaa";
       })
       .catch((message) => {
-        alert(message);
+        setErrorMsg("Invalid username or password");
       });
   }
-
   return (
-  <div class="container-fluid">
-       <div class="row my-3">
-            <div class="display-2 fw-semibold text-center">Login</div>
-       </div>
+    <div class="container-fluid">
+      <div class="row my-3">
+        <div class="display-2 fw-semibold text-center">Login</div>
+      </div>
       <div class="row pt-1">
         <div class="col-4">
-            <p></p>
+          <p></p>
         </div>
-
         <div class="col">
           <Container className="mt-3">
             <Form.Group className="mb-3">
@@ -62,6 +59,20 @@ const Login = () => {
                 }
               />
             </Form.Group>
+            {errorMsg ? (
+              <Row className="mb-4">
+                <Col md="8" lg="6">
+                  <div
+                    className=""
+                    style={{ color: "red", fontWeight: "bold" }}
+                  >
+                    {errorMsg}
+                  </div>
+                </Col>
+              </Row>
+            ) : (
+              <></>
+            )}
             <Row>
               <Col>
                 <Button
@@ -76,7 +87,7 @@ const Login = () => {
                 </Button>
                 <Button
                   className="m-3"
-                  onClick={() => window.location.href = "/register"}
+                  onClick={() => (window.location.href = "/register")}
                   size="lg"
                   id="submit"
                   type="button"
@@ -86,14 +97,10 @@ const Login = () => {
                 </Button>
               </Col>
             </Row>
-
-
           </Container>
-
-
         </div>
       </div>
-  </div>
+    </div>
   );
 };
 
