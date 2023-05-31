@@ -9,7 +9,6 @@ const Register = () => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [jwt, setJwt] = useLocalState("", "jwt");
-  const [errorMsg, setErrorMsg] = useState(null);
 
   const [validated, setValidated] = useState(false);
 
@@ -30,16 +29,12 @@ const Register = () => {
       password: password,
     };
     console.log(requestBody);
-    sendRequest("rest/auth/register", "POST", null, requestBody)
-    .then(
+    sendRequest("rest/auth/register", "POST", null, requestBody).then(
       (response) => {
         console.log(response);
         window.location.href = "login";
       }
-    )
-    .catch((message) => {
-      setErrorMsg("can not register")
-    });
+    );
     //   .catch((errorResponse) => {
     //     alert(errorResponse);});
   }
@@ -121,75 +116,22 @@ const Register = () => {
                     feedback="You must agree before submitting."
                     feedbackType="invalid"
                   />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a username.
-                  </Form.Control.Feedback>
-                </InputGroup>
-              </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationCustom01">
-                <Form.Label>Gender</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  value={gender}
-                  onChange={(e) => setGender(e.currentTarget.value)}
-                >
-                  <option value="male">male</option>
-                  <option value="female">female</option>
-                  onChange={(event) => setGender(event.target.value)}
-                </Form.Select>
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              </Form.Group>
-            </Row>
-            <Form.Group as={Col} md="4" controlId="validationCustomPassword">
-              <Form.Label>Password</Form.Label>
-              <InputGroup hasValidation>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  aria-describedby="inputGroupPrepend"
-                  required
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please choose a password.
-                </Form.Control.Feedback>
-              </InputGroup>
-            </Form.Group>
-            <Row className="mb-3"></Row>
-            <Form.Group className="mb-3">
-              <Form.Check
-                required
-                label="Agree to terms and conditions"
-                feedback="You must agree before submitting."
-                feedbackType="invalid"
-              />
-            </Form.Group>
-            {errorMsg ? (
-              <Row className="mb-4">
-                <Col md="8" lg="6">
-                  <div className="" style={{ color: "red", fontWeight: "bold" }}>
-                    {errorMsg}
-                  </div>
-                </Col>
-              </Row>
-            ) : (
-              <></>
-            )}
-            <Button type="submit" size="lg" onClick={() => sendRegistrationRequest()}>
-              Register
-            </Button>
-            <Button
-              className="m-3"
-              onClick={() => window.location.href = "/login"}
-              size="lg"
-              id="submit"
-              type="button"
-              variant="success"
-              >
-              Login
-            </Button>
-          </Form>
+                </Form.Group>
+                <Button type="submit" size="lg" onClick={() => sendRegistrationRequest()}>
+                  Register
+                </Button>
+                <Button
+                  className="m-3"
+                  onClick={() => window.location.href = "/login"}
+                  size="lg"
+                  id="submit"
+                  type="button"
+                  variant="success"
+                  >
+                  Login
+                </Button>
+              </Form>
+            </div>
         </div>
       </div>
      </div>
