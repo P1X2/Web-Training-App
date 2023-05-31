@@ -18,6 +18,7 @@ function TrainingPlan() {
   const [minWeight, setMinWeight] = useState("");
   const [tutorialUrl, setTutorialUrl] = useState("");
   const [muscleGroup, setMuscleGroup] = useState("");
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const muscleGroups = ["LEGS", "ARMS", "BACK", "CHEST", "ABS"];
 
@@ -60,62 +61,35 @@ function TrainingPlan() {
       muscleGroup: muscleGroup,
     };
 
-    //try {
-    try {
-      sendRequest("rest/exercise/blank/create", "POST", null, exercise);
+    setErrorMsg("");
+    
+    sendRequest("rest/exercise/blank/create", "POST", null, exercise)
+    .then((response) => {
+      if (response.status === 400){
+        alert("aaaaa");
 
-      //fetchExercises(); // Fetch the updated exercise list from the server
-      setExerciseName("");
-      setMinReps("");
-      setMaxReps("");
-      setMaxWeight("");
-      setMinWeight("");
-      setTutorialUrl("");
-      setMuscleGroup("");
-      fetchExercises();
-    } catch (error) {
-      console.error("Error occurred while saving exercise", error);
-    }
-    fetchExercises();
-  };
-
-  //     if (response) {
-  //       const savedExercise = response;
-  //       setExercises([...exercises, savedExercise]);
-  //       setExerciseName("");
-  //       setMinReps("");
-  //       setMaxReps("");
-  //       setMaxWeight("");
-  //       setMinWeight("");
-  //       setTutorialUrl("");
-  //       setMuscleGroup("");
-  //     } else {
-  //       console.error("Failed to save exercise");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error occurred while saving exercise", error);
-  //   }
-  // };
-
-  const deleteExercise = async (index) => {
-    const exerciseId = exercises[index].id;
-    try {
-      const response = await sendRequest(
-        `rest/exercise/${exerciseId}`,
-        "DELETE"
-      );
-
-      if (response) {
-        const updatedExercises = [...exercises];
-        updatedExercises.splice(index, 1);
-        setExercises(updatedExercises);
-      } else {
-        console.error("Failed to delete exercise");
+      } else if(response.status !== 200){
+        setErrorMsg("Exercise with that name already exists");
       }
-    } catch (error) {
-      console.error("Error occurred while deleting exercise", error);
-    }
+      fetchExercises();
+    })
+    .catch((message) => {
+      setErrorMsg("Invalid data in exercise");
+      });
+
+    fetchExercises();
+    setExerciseName("");
+    setMinReps("");
+    setMaxReps("");
+    setMaxWeight("");
+    setMinWeight("");
+    setTutorialUrl("");
+    setMuscleGroup("");
+
+    
+
   };
+
 
   return (
     <div className="my-5 container-fluid">
@@ -164,21 +138,21 @@ function TrainingPlan() {
                   </Form.Group>
 
                   <Form.Group className="mb-3">
-                    <Form.Label>Maximal Weight</Form.Label>
-                    <Form.Control
-                      type="number"
-                      value={maxWeight}
-                      onChange={(event) => setMaxWeight(event.target.value)}
-                      required
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
                     <Form.Label>Minimal Weight</Form.Label>
                     <Form.Control
                       type="number"
                       value={minWeight}
                       onChange={(event) => setMinWeight(event.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Maximal Weight</Form.Label>
+                    <Form.Control
+                      type="number"
+                      value={maxWeight}
+                      onChange={(event) => setMaxWeight(event.target.value)}
                       required
                     />
                   </Form.Group>
@@ -210,19 +184,21 @@ function TrainingPlan() {
                     </select>
                   </div>
 
-                  {/* <Form.Group className="mb-3">
-                    <Form.Label>Muscle Group</Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={muscleGroup}
-                      onChange={(event) => setMuscleGroup(event.target.value)}
-                      required
-                    />
-                  </Form.Group> */}
                   <Button type="submit"  className="btn btn-warning btn-lg btn-block mt-4">
                     Add Exercise
                   </Button>
+                  {errorMsg ? (
+                  <Form.Group className="mb-4">
+                      <div className="" style={{ color: "red", fontWeight: "bold" , fontSize: "14"}}>
+                        {errorMsg}
+                      </div>
+                  </Form.Group>
+                ) : (
+                <></>
+                )}
+
                 </Form>
+                
               </div>
             </div>
 
@@ -259,14 +235,6 @@ function TrainingPlan() {
                             >
                               Tutorial Video
                             </a>
-
-                            <Button
-                              variant="danger"
-                              className="ms-3"
-                              onClick={() => deleteExercise(index)}
-                            >
-                              Delete
-                            </Button>
                           </div>
                         </div>
                       </ListGroup.Item>

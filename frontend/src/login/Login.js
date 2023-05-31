@@ -21,7 +21,7 @@ const Login = () => {
       })
       .catch((message) => {
         setErrorMsg("Invalid username or password");
-      });
+        });
   }
   return (
     <div class="container-fluid">
@@ -62,16 +62,13 @@ const Login = () => {
             {errorMsg ? (
               <Row className="mb-4">
                 <Col md="8" lg="6">
-                  <div
-                    className=""
-                    style={{ color: "red", fontWeight: "bold" }}
-                  >
+                  <div className="" style={{ color: "red", fontWeight: "bold" }}>
                     {errorMsg}
                   </div>
                 </Col>
               </Row>
             ) : (
-              <></>
+            <></>
             )}
             <Row>
               <Col>
