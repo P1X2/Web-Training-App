@@ -33,12 +33,12 @@ const Home = () => {
         <div class="row ml-1">
 
             <div class="col-2">
-                  <img src={tom} width="100%" alt="Tom" />
-                  <img src={ronnie2} width="100%" alt="Tom" />
-                  <img src={arnold1} width="100%" alt="Tom" />
-                  <img src={zane2} width="100%" alt="Tom" />
-                  <img src={arnold4} width="100%" alt="Tom" />
-                  <img src={chris2} width="100%" alt="Tom" />
+                  <img src={tom} class="img" width="100%" alt="Tom" />
+                  <img src={ronnie2} class="img" width="100%" alt="Tom" />
+                  <img src={arnold1} class="img" width="100%" alt="Tom" />
+                  <img src={zane2} class="img" width="100%" alt="Tom" />
+                  <img src={arnold4} class="img" width="100%" alt="Tom" />
+                  <img src={chris2} class="img" width="100%" alt="Tom" />
 
 
             </div>
@@ -117,14 +117,14 @@ const Home = () => {
             <div class="col-1"></div>
             <div class="col-2 float-right">
 
-                  <img src={bobby1} width="100%" alt="Tom" />
-                  <img src={chris2} width="100%" alt="Tom" />
+                  <img src={bobby1} class="img" width="100%" alt="Tom" />
+                  <img src={chris2} class="img" width="100%" alt="Tom" />
 
-                  <img src={miro1} width="100%" alt="Tom" />
-                  <img src={arnold2} width="100%" alt="Tom" />
-                  <img src={ronnie3} width="100%" alt="Tom" />
-                  <img src={zane1} width="100%" alt="Tom"/>
-                  <img src={phil1} width="100%" alt="Tom"/>
+                  <img src={miro1} class="img" width="100%" alt="Tom" />
+                  <img src={arnold2} class="img" width="100%" alt="Tom" />
+                  <img src={ronnie3} class="img" width="100%" alt="Tom" />
+                  <img src={zane1} class="img" width="100%" alt="Tom"/>
+                  <img src={phil1} class="img" width="100%" alt="Tom"/>
 
 
             </div>
