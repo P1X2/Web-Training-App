@@ -35,11 +35,11 @@ function BmiCalculator() {
   
 
 return (
-    <Container className="my-5">
-      <h1 class="text-lg-center fs-1">Calculators</h1>
+    <Container className="my-5 ">
+      <h1 class="text-center display-2">Calculators</h1>
 
-      <div className="my-5">
-        <h2>BMI Calculator</h2>
+      <div className="mt-3">
+        <h2 class="">BMI Calculator</h2>
         <Form onSubmit={calculateBmi}>
           <Form.Group className="mb-3">
             <Form.Label>Weight (in kg)</Form.Label>
@@ -51,7 +51,7 @@ return (
             />
           </Form.Group>
 
-          <Form.Group className="mb-3">
+          <Form.Group className="my-3">
             <Form.Label>Height (in cm)</Form.Label>
             <Form.Control
               type="number"
@@ -61,7 +61,7 @@ return (
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="warning" type="submit">
             Calculate BMI
           </Button>
         </Form>
@@ -96,7 +96,7 @@ return (
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="warning" type="submit">
             Calculate Max Bench Press
           </Button>
         </Form>
