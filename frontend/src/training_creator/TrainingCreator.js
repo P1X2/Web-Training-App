@@ -61,16 +61,23 @@ function TrainingPlan() {
       muscleGroup: muscleGroup,
     };
 
-    //try {
     setErrorMsg("");
     
     sendRequest("rest/exercise/blank/create", "POST", null, exercise)
     .then((response) => {
-      if (response.status !== 200){
-        setErrorMsg("Invalid exercise, try again");
+      if (response.status === 400){
+        alert("aaaaa");
+
+      } else if(response.status !== 200){
+        setErrorMsg("Exercise with that name already exists");
       }
-    });
-    //fetchExercises(); // Fetch the updated exercise list from the server
+      fetchExercises();
+    })
+    .catch((message) => {
+      setErrorMsg("Invalid data in exercise");
+      });
+
+    fetchExercises();
     setExerciseName("");
     setMinReps("");
     setMaxReps("");
@@ -78,7 +85,8 @@ function TrainingPlan() {
     setMinWeight("");
     setTutorialUrl("");
     setMuscleGroup("");
-    fetchExercises();
+
+    
 
   };
 
