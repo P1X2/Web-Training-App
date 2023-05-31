@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
-import { useLocalState } from "../util/useLocalStorage";
 import sendRequest from "../util/ajax";
 import YouTube from 'react-youtube';
+import { useLocalState } from "../util/useLocalStorage";
+
 
 
                                      /* <a class="text-secondary" href={exercise.videoUrl} target="_blank" rel="noopener noreferrer">
@@ -10,7 +11,7 @@ import YouTube from 'react-youtube';
                                       </a>*/
 const opts = {
       height: '300',
-      width: '320',
+      width: '90%',
     playerVars: {
       autoplay: 0,
         },
@@ -22,7 +23,7 @@ const opts = {
   };
 
 function Plan() {
-  const [plan, setPlan] = useLocalState("", "plan");
+  const [plan, setPlan] = useState("", "plan");
   const [jwt, setJwt] = useLocalState("", "jwt");
 
   useEffect(() => {
@@ -101,7 +102,7 @@ function Plan() {
 
         </div>
       ) : (
-        <p>No plan available</p>
+        <h3 class="text-center pt-3 display-4">No plan available</h3>
       )}
     </div>
   );

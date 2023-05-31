@@ -38,6 +38,10 @@ public class ExerciseService {
         ){
             throw new IllegalArgumentException("request is wrong");
         }
+        exerciseBlankRepository.findByName(request.getName()).ifPresent(exercise->{
+            throw new IllegalArgumentException("exercise already exists");
+        });
+
         ExerciseBlank exerciseBlank = ExerciseBlank
                 .builder()
                 .name(request.getName())
@@ -53,7 +57,6 @@ public class ExerciseService {
 
     public ExerciseForPlan createExerciseForPlan(ExerciseForPlanCreateRequest request)
     {
-        //TODO rozróżnic obliczanie na kobiet i mezczyzn
             ExerciseBlank exerciseBlank = exerciseBlankRepository
                     .findByName(request.getExerciseBlankName())
                     .orElseThrow(() -> new ObjectNotFoundException(ExerciseBlank.class,"Exercise not found"));

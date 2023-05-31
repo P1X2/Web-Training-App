@@ -5,6 +5,8 @@ import com.app.TrainingWebApp.exercise.requests.ExerciseBlankCreateRequest;
 import com.app.TrainingWebApp.exercise.requests.ExerciseForPlanCreateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,15 +32,14 @@ public class ExerciseController {
     }
 
     @PostMapping("/blank/create")
-    public String createExerciseBlank(
+    public ResponseEntity<String> createExerciseBlank(
             @RequestBody ExerciseBlankCreateRequest request
             ){
         try {
-            return service.createExerciseBlank(request).getName();
-        }catch (Throwable e){
-            System.out.println(e.toString());
+            return ResponseEntity.ok(service.createExerciseBlank(request).getName());
+        }catch (IllegalArgumentException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return null;
     }
 
     @PostMapping("/for_plan/create")

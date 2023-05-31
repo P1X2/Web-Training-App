@@ -9,7 +9,7 @@ import './thermometer.css';
 const Testoboost = () => {
   const opts = {
       height: '790',
-      width: '1040',
+      width: '100%',
     playerVars: {
       autoplay: 1,
     },
@@ -47,13 +47,13 @@ const Testoboost = () => {
 
 
         <div class="row text-center text-decoration-underline py-3">
-            <h1 class="display-2 fw-semibold pt-2">TOM PLATZ</h1>
+            <h1 class="display-2 fw-semibold pt-2">TOM PLATZ - THE LEGEND</h1>
         </div>
 
        <p></p>
 
         <div class="row ">
-            <div class="col text-center ml-2">
+            <div class="col-8 text-center ml-2">
                <YouTube videoId={getVideoId("https://www.youtube.com/watch?v=JA5ASP4vOZg&ab_channel=Overload")} opts={opts} />
             </div>
 

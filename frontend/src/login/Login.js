@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import sendRequest from "../util/ajax";
 import { useLocalState } from "../util/useLocalStorage";
-
 const Login = () => {
   //"" is default value in useState function
   const [username, setUsername] = useState("");
@@ -14,7 +13,6 @@ const Login = () => {
       username: username,
       password: password,
     };
-
     sendRequest("rest/auth/login", "POST", "", requestBody)
       .then((data) => {
         console.log(data);
@@ -25,17 +23,15 @@ const Login = () => {
         setErrorMsg("Invalid username or password");
         });
   }
-
   return (
-  <div class="container-fluid">
-       <div class="row my-3">
-            <div class="display-2 fw-semibold text-center">Login</div>
-       </div>
+    <div class="container-fluid">
+      <div class="row my-3">
+        <div class="display-2 fw-semibold text-center">Login</div>
+      </div>
       <div class="row pt-1">
         <div class="col-4">
-            <p></p>
+          <p></p>
         </div>
-
         <div class="col">
           <Container className="mt-3">
             <Form.Group className="mb-3">
@@ -88,7 +84,7 @@ const Login = () => {
                 </Button>
                 <Button
                   className="m-3"
-                  onClick={() => window.location.href = "/register"}
+                  onClick={() => (window.location.href = "/register")}
                   size="lg"
                   id="submit"
                   type="button"
@@ -98,14 +94,10 @@ const Login = () => {
                 </Button>
               </Col>
             </Row>
-
-
           </Container>
-
-
         </div>
       </div>
-  </div>
+    </div>
   );
 };
 
