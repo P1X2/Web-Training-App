@@ -18,6 +18,7 @@ function TrainingPlan() {
   const [minWeight, setMinWeight] = useState("");
   const [tutorialUrl, setTutorialUrl] = useState("");
   const [muscleGroup, setMuscleGroup] = useState("");
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const muscleGroups = ["LEGS", "ARMS", "BACK", "CHEST", "ABS"];
 
@@ -61,23 +62,26 @@ function TrainingPlan() {
     };
 
     //try {
-    try {
-      sendRequest("rest/exercise/blank/create", "POST", null, exercise);
-
-      //fetchExercises(); // Fetch the updated exercise list from the server
-      setExerciseName("");
-      setMinReps("");
-      setMaxReps("");
-      setMaxWeight("");
-      setMinWeight("");
-      setTutorialUrl("");
-      setMuscleGroup("");
-      fetchExercises();
-    } catch (error) {
-      console.error("Error occurred while saving exercise", error);
-    }
+    setErrorMsg("");
+    
+    sendRequest("rest/exercise/blank/create", "POST", null, exercise)
+    .then((response) => {
+      if (response.status !== 200){
+        setErrorMsg("Invalid exercise, try again");
+      }
+    });
+    //fetchExercises(); // Fetch the updated exercise list from the server
+    setExerciseName("");
+    setMinReps("");
+    setMaxReps("");
+    setMaxWeight("");
+    setMinWeight("");
+    setTutorialUrl("");
+    setMuscleGroup("");
     fetchExercises();
+
   };
+
 
   return (
     <div className="my-5 container-fluid">
@@ -172,19 +176,21 @@ function TrainingPlan() {
                     </select>
                   </div>
 
-                  {/* <Form.Group className="mb-3">
-                    <Form.Label>Muscle Group</Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={muscleGroup}
-                      onChange={(event) => setMuscleGroup(event.target.value)}
-                      required
-                    />
-                  </Form.Group> */}
                   <Button type="submit"  className="btn btn-warning btn-lg btn-block mt-4">
                     Add Exercise
                   </Button>
+                  {errorMsg ? (
+                  <Form.Group className="mb-4">
+                      <div className="" style={{ color: "red", fontWeight: "bold" , fontSize: "14"}}>
+                        {errorMsg}
+                      </div>
+                  </Form.Group>
+                ) : (
+                <></>
+                )}
+
                 </Form>
+                
               </div>
             </div>
 
