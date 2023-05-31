@@ -1,8 +1,23 @@
 .tom{
-    background-image: url(tom.jpg);
+    height: 100%;
+    width: 100%;
+/*    background-image: url(tom.jpg);*/
+    opacity: 1;
     /*background-size: cover;
     background-position-x: center;
     background-position-y: 70;*/
-    background-repeat: no-repeat;
+/*    background-repeat: no-repeat;*/
+
+}
+
+.ronnie{
+    height: 100%;
+    width: 10;
+    background-image: url(ronnie2.jpg);
+    opacity: 1;
+    /*background-size: cover;
+    background-position-x: center;
+    background-position-y: 70;*/
+/*    background-repeat: no-repeat;*/
 
 }

@@ -16,7 +16,7 @@ const Home = () => {
       <Container class="container-xxl">
           <Row>
               <div class="col">
-                    <img src={tom} width="100%" alt="React Image" />
+                    <img src={tom} width="120%" alt="React Image" />
               </div>
 
               <Col class="fs-1 pt-4 text-center">
