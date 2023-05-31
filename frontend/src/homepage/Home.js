@@ -1,23 +1,25 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import './img.css'
+
 import tom from './tom.jpg'
 import toml from './tom lustro.jpg'
+import ronnie2 from './ronnie2.jpg'
+import ronnie3 from './ronie3.jpg'
+import arnold1 from './arnold1.jpg'
+import arnold2 from './arnold2.jpg'
+import arnold3 from './arnold3.jpg'
+import arnold4 from './arnold4.jpg'
+import chris1 from './chris1.jpg'
+import chris2 from './chris2.jpg'
+import bobby1 from './boooooooby1.jpg'
+import miro1 from './miro1.jpg'
+import zane1 from './zane1.jpg'
+import zane2 from './zane2.jpg'
+import phil1 from './phil1.jpg'
 
 
-/*<h2><span>Join us!</span></h2>
 
-              <Button
-                className="btn"
-                size="lg"
-                id="submit"
-                type="button"
-                variant="success"
-                onClick={() => window.location.href = "/register"}
-              >
-                Register
-
-              </Button>*/
 
 
 const Home = () => {
@@ -28,17 +30,27 @@ const Home = () => {
 
         </div>
 
-        <div class="row">
-            <div class="col">
+        <div class="row ml-1">
+
+            <div class="col-2">
                   <img src={tom} width="100%" alt="Tom" />
+                  <img src={ronnie2} width="100%" alt="Tom" />
+                  <img src={arnold1} width="100%" alt="Tom" />
+                  <img src={zane2} width="100%" alt="Tom" />
+                  <img src={arnold4} width="100%" alt="Tom" />
+                  <img src={chris2} width="100%" alt="Tom" />
+
+
             </div>
 
-            <div class="col-7 fs-3 pt-4 text-center">
+            <div class="col-1"></div>
+
+            <div class="col-6 fs-3 text-center">
                 <div class="row">
-                    <div class="display-2 mb-4">Who are we?</div>
+                    <div class="display-2 mt-5 mb-3">Who are we?</div>
                     <p>
 
-                    We are a professional gym center that provides comprehensive care and support in
+                    We are a professional gym app that provides comprehensive care and support in
                     achieving your fitness goals. Our experienced team consists
                     of highly qualified trainers who are ready to assist
                     you in every aspect of your journey to health and fitness.
@@ -47,22 +59,21 @@ const Home = () => {
                 </div>
 
                 <div class="row">
-                    <div class="display-2 my-4">What do we do?</div>
+                    <div class="display-2 mt-5 mb-3">What do we do?</div>
                     <p>
 
                     Our main goal is to provide you with the perfect training environment where you can
                     develop your skills and achieve your goals. We believe that well-designed and diverse training programs are the key to success. Therefore,
-                     we offer a wide range of fitness classes, a
-                     state-of-the-art gym with modern equipment, and various training programs for people at different levels of fitness.
+                     we offer various training programs for people at different levels of fitness.
 
                     </p>
                 </div>
 
                 <div class="row">
-                    <div class="display-2 my-4">What do we offer?</div>
+                    <div class="display-2 mt-3 mb-3">What do we offer?</div>
 
                     <p><span class="fw-semibold fs-2">1. </span>
-                        Personalized training plan: Our experienced trainers are ready to create a personalized training plan tailored to your goals
+                        Personalized training plan: Our app ready to create a personalized training plan tailored to your goals
                         and preferences. This will allow you to train effectively and efficiently, maximizing your progress.
                     </p>
 
@@ -77,9 +88,9 @@ const Home = () => {
                 </div>
 
                 <div class="row">
-                    <div class="display-2 my-4">Why should you partner with us?</div>
+                    <div class="display-2 mt-5 mb-3">Why should you partner with us?</div>
 
-                    <h2>
+                    <h2 class="my-2">
                     Collaborating with us means joining a community that is dedicated to your success.
                      Here are a few reasons why you should choose to work with us:
                      </h2>
@@ -101,43 +112,102 @@ const Home = () => {
                         provide guidance during challenging times, and keep you accountable to stay on track.
                     </p>
 
-                   <p>
-                       In addition to helping you achieve your fitness goals, regular gym workouts can have numerous positive health effects.
-                       Engaging in physical exercise can improve cardiovascular health, increase muscle strength and endurance, enhance flexibility and mobility,
-                       and boost overall energy levels. Moreover, regular gym sessions can also reduce stress, improve mood, and promote better sleep patterns. By incorporating
-                       gym workouts into your routine,
-                       you can experience a wide range of health benefits that contribute to your overall well-being.
-                   </p>
                 </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-2 float-right">
 
-                <div class="row">
-                    <div class="display-2 my-4 fw-semibold">Join us!</div>
-                    <p>
-                        Join our community and start achieving your fitness goals today! <span class="text-secondary fs-2"><a class="text-danger" href="/register">Register</a></span> to learn more and schedule a free consultation.
-                    </p>
-                </div>
+                  <img src={bobby1} width="100%" alt="Tom" />
+                  <img src={chris2} width="100%" alt="Tom" />
 
-
-
-
-
-
+                  <img src={miro1} width="100%" alt="Tom" />
+                  <img src={arnold2} width="100%" alt="Tom" />
+                  <img src={ronnie3} width="100%" alt="Tom" />
+                  <img src={zane1} width="100%" alt="Tom"/>
+                  <img src={phil1} width="100%" alt="Tom"/>
 
 
             </div>
 
-            <div class="col"><img src={toml} width="100%"  alt="Tom" /></div>
-
         </div>
+
+
 
 
         <div class="row">
+            <div class="display-2 text-center fw-semibold mt-5 mb-3">Opinions about our work</div>
+          <div class="col-2"></div>
 
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Anna K.</h5>
+                <p class="card-text">
+                    "I wholeheartedly recommend this app! Thanks to their personalized approach to training, I
+                    achieved my fitness goals faster than I expected. The trainers are professional and always ready to help.
+                 </p>
+              </div>
+            </div>
+          </div>
 
+          <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Michał S.</h5>
+                  <p class="card-text">
+                  "After many unsuccessful attempts, I finally found the perfect place to start training. This is a app where I feel comfortable and see
+                   real progress. The trainers are highly qualified and always approach each client individually. I highly recommend it!"
+                   </p>
+
+                </div>
+              </div>
+            </div>
+
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Katarzyna B.</h5>
+                <p class="card-text">
+                    "I am very satisfied with the services of this app and trainers. They developed a
+                    training plan for me that they tailored to my goals and limitations. Thanks to their support and motivation, I feel more confident a
+                    nd stronger than ever before. I highly recommend it!"
+                </p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2"></div>
+
+        </div>
+        <div class="row mt-5">
+            <div class="col-2"></div>
+            <div class="col fs-3 text-center">
+
+            <div class="display-2 mt-5 mb-3 fw-semibold " ><span class="text-secondary"><a class="text-danger" href="/register">Join our community!</a></span></div>
+
+            <div class="card">
+                          <div class="card-body">
+                             Start achieving your fitness goals today! <span class="text-secondary fs-2"><a class="text-danger" href="/register">Register</a></span> to learn more and schedule a free consultation.
+
+                          </div>
+                        </div>
+
+            </div>
+
+        <div class="col-2"></div>
 
 
 
         </div>
+
+
+
+
+
+
+
+
 
 
     </>
