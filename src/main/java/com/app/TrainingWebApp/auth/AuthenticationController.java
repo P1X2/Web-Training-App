@@ -26,9 +26,12 @@ public class AuthenticationController {
     public ResponseEntity<?> registerUser(
             @RequestBody RegisterRequest registerRequest
     ) {
-
-        return ResponseEntity.ok(authenticationService.register(registerRequest).getUsername());
-    }
+        try {
+            return ResponseEntity.ok(authenticationService.register(registerRequest).getUsername());
+        }catch (UsernameAlreadyExistsException exception){
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+        }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(
