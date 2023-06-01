@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -18,7 +19,9 @@ public class ExerciseService {
     private final ExerciseForPlanRepository exerciseForPlanRepository;
 
     public List<ExerciseBlank> getAllExercisesBlank(){
-        return exerciseBlankRepository.findAll();
+        return exerciseBlankRepository.findAll().stream()
+                .filter(exerciseBlank -> !exerciseBlank.getVideoUrl().equals("1"))
+                .collect(Collectors.toList());
     }
 
     public List<ExerciseBlank> getExercisesBlankByMuscleGroup(MuscleGroup muscleGroup){

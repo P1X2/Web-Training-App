@@ -58,8 +58,18 @@ public class AuthenticationController {
     public ResponseEntity<Boolean> validateJwt(
             @RequestParam String token, @AuthenticationPrincipal User user
     ){
-        return ResponseEntity.ok(jwtService.isTokenValid(user,token));
+        try {
+            return ResponseEntity.ok(jwtService.isTokenValid(user, token));
+        }catch (Exception e){
+            return ResponseEntity.ok(false);
+        }
     }
 
+    @GetMapping("/role")
+    public LoginResponse getRole(
+            @AuthenticationPrincipal User user
+    ){
+        return new LoginResponse(user.getRole().name());
+    }
 
 }
