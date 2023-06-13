@@ -41,13 +41,13 @@ public class ExerciseService {
         ){
             throw new IllegalArgumentException("request is wrong");
         }
-        exerciseBlankRepository.findByName(request.getName()).ifPresent(exercise->{
+        exerciseBlankRepository.findByName(request.getName().toUpperCase()).ifPresent(exercise->{
             throw new IllegalArgumentException("exercise already exists");
         });
 
         ExerciseBlank exerciseBlank = ExerciseBlank
                 .builder()
-                .name(request.getName())
+                .name(request.getName().toUpperCase())
                 .maxReps(request.getMaxReps())
                 .minReps(request.getMinReps())
                 .maxWeight(request.getMaxWeight())

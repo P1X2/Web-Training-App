@@ -3,6 +3,7 @@ package com.app.TrainingWebApp.auth;
 import com.app.TrainingWebApp.config.JwtService;
 import com.app.TrainingWebApp.exceptions.ApiException;
 import com.app.TrainingWebApp.exceptions.UsernameAlreadyExistsException;
+import com.app.TrainingWebApp.user.Role;
 import com.app.TrainingWebApp.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,10 +67,10 @@ public class AuthenticationController {
     }
 
     @GetMapping("/role")
-    public LoginResponse getRole(
+    public RoleResponse getRole(
             @AuthenticationPrincipal User user
     ){
-        return new LoginResponse(user.getRole().name());
+        return new RoleResponse(user.getRole().name());
     }
 
 }

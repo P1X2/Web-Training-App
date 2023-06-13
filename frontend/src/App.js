@@ -25,8 +25,7 @@ function App() {
   function isTrainer() {
     sendRequest("/rest/auth/role", "GET", jwt)
       .then((response) => {
-        console.log(response.jwtToken === "TRAINER");
-        setIsTrainer1(response.jwtToken === "TRAINER");
+        setIsTrainer1(response.role === "TRAINER");
       })
       .catch((er) => {
         console.log(er);

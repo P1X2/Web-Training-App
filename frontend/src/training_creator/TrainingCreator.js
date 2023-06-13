@@ -4,6 +4,7 @@ import { useLocalState } from "../util/useLocalStorage";
 import sendRequest from "../util/ajax";
 
 function TrainingPlan() {
+  const [jwt, setJwt] = useLocalState("", "jwt");
   const [exercises, setExercises] = useState([]);
   const [exerciseName, setExerciseName] = useState("");
   const [minReps, setMinReps] = useState("");
@@ -57,19 +58,15 @@ function TrainingPlan() {
 
     setErrorMsg("");
 
-    sendRequest("rest/exercise/blank/create", "POST", null, exercise).then(
+    sendRequest("rest/exercise/blank/create", "POST", jwt, exercise).then(
       (response) => {
         if (response.status === 400) {
-          alert("aaaaa");
         } else if (response.status !== 200) {
           setErrorMsg("Exercise with that name already exists");
         }
         fetchExercises();
       }
     );
-    // .catch((message) => {
-    //   setErrorMsg("Invalid data in exercise");
-    //   });
 
     fetchExercises();
     setExerciseName("");

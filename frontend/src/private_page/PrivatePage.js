@@ -11,7 +11,6 @@ const PrivateRoute = ({ children }) => {
   if (jwt) {
     sendRequest(`/rest/auth/validate?token=${jwt}`, "GET", jwt)
       .then((isValid) => {
-        // console.log(isValid);
         setIsValid(isValid);
         setLoading(false);
       })
