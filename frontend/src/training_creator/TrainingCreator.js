@@ -78,6 +78,22 @@ function TrainingPlan() {
     setMuscleGroup("");
   };
 
+  const deleteExercise = async (index) => {
+    const exerciseId = exercises[index].id;
+
+    const req = {
+      id: exerciseId,
+    };
+
+    try {
+      sendRequest("rest/exercise/blank/delete", "DELETE",'',req);
+      fetchExercises(); // Fetch the updated exercise list from the server
+
+    } catch (error) {
+      console.error("Error occurred while deleting exercise", error);
+    }
+  };
+
   return (
     <div className="my-5 container-fluid">
       <div class="row text-center ">
@@ -221,6 +237,13 @@ function TrainingPlan() {
                       >
                         Tutorial Video
                       </a>
+                      <Button
+                        variant="danger"
+                        className="ms-3"
+                        onClick={() => deleteExercise(index)}
+                      >
+                        Delete
+                      </Button>
                     </div>
                   </div>
                 </ListGroup.Item>
