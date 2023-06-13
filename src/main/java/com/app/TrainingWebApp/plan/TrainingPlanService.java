@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -27,11 +28,21 @@ public class TrainingPlanService {
     public TrainingPlan createTrainingPlan(TrainingPlanCreateRequest request, User user){
         Random random = new Random();
         List<String> exerciseBlankList = new ArrayList<>();
-        List<ExerciseBlank> absExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.ABS);
-        List<ExerciseBlank> legsExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.LEGS);
-        List<ExerciseBlank> backExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.BACK);
-        List<ExerciseBlank> armsExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.ARMS);
-        List<ExerciseBlank> chestExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.CHEST);
+        List<ExerciseBlank> absExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.ABS).stream()
+                .filter(exerciseBlank -> !exerciseBlank.getVideoUrl().equals("1"))
+                .collect(Collectors.toList());
+        List<ExerciseBlank> legsExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.LEGS).stream()
+                .filter(exerciseBlank -> !exerciseBlank.getVideoUrl().equals("1"))
+                .collect(Collectors.toList());
+        List<ExerciseBlank> backExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.BACK).stream()
+                .filter(exerciseBlank -> !exerciseBlank.getVideoUrl().equals("1"))
+                .collect(Collectors.toList());
+        List<ExerciseBlank> armsExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.ARMS).stream()
+                .filter(exerciseBlank -> !exerciseBlank.getVideoUrl().equals("1"))
+                .collect(Collectors.toList());
+        List<ExerciseBlank> chestExercises=exerciseBlankRepository.findByMuscleGroup(MuscleGroup.CHEST).stream()
+                .filter(exerciseBlank -> !exerciseBlank.getVideoUrl().equals("1"))
+                .collect(Collectors.toList());
 
         exerciseBlankList.add(absExercises
                 .get(random.nextInt(absExercises.size())).getName());
@@ -62,9 +73,9 @@ public class TrainingPlanService {
         }
         Integer timeBreak=2;
 
-        if (request.getMainTarget()=="strength"){
+        if (request.getMainTarget().equals("strength")){
             timeBreak = 5;
-        } else if (request.getMainTarget()=="stamina") {
+        } else if (request.getMainTarget().equals("stamina")) {
             timeBreak=3;
         }
 

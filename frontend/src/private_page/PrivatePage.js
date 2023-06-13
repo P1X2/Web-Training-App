@@ -11,12 +11,11 @@ const PrivateRoute = ({ children }) => {
   if (jwt) {
     sendRequest(`/rest/auth/validate?token=${jwt}`, "GET", jwt)
       .then((isValid) => {
-        console.log(isValid);
         setIsValid(isValid);
         setLoading(false);
-      }) //do zmiany potem
+      })
       .catch((error) => {
-        console.log(error);
+        return <Navigate to="/login" />;
       });
   } else {
     return <Navigate to="/login" />;

@@ -134,7 +134,7 @@ const Quiz = () => {
     experienceScore = experiencePoints * experiencePointsMultiplayer;
 
     if (experienceScore >= 40) {
-      experienceLevel = "advanced";
+      experienceLevel = "expert";
     }
 
     if (experienceScore <= 40 && experienceScore >= 25) {
@@ -298,7 +298,6 @@ const Quiz = () => {
                 <option value="CHEST">Chest</option>
                 <option value="BACK">Back</option>
                 <option value="LEGS">Legs</option>
-                <option value="SHOULDER">Shoulders</option>
                 <option value="ARMS">Arms</option>
                 <option value="ABS">Abs</option>
               </select>

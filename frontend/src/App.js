@@ -13,24 +13,50 @@ import Testoboost from "./testbooster/Testoboost";
 import Quiz from "./quiz/Quiz";
 import TrainingPlan from "./training_creator/TrainingCreator";
 import Plan from "./training_plan/Plan";
+import { useLocalState } from "./util/useLocalStorage";
+import { useEffect, useState } from "react";
 
 function App() {
-  // console.log(sendRequest("rest/auth//get?username=wojtek398", "GET"));
-  //cos nie dziala
+  const [jwt, setJwt] = useLocalState("", "jwt");
+  const [isTrainer1, setIsTrainer1] = useLocalState(false, "isTrainer");
+  useEffect(() => {
+    isTrainer();
+  }, []);
+  function isTrainer() {
+    sendRequest("/rest/auth/role", "GET", jwt)
+      .then((response) => {
+        setIsTrainer1(response.role === "TRAINER");
+      })
+      .catch((er) => {
+        console.log(er);
+      });
+  }
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/calculator" element={<BmiCalculator />}></Route>
-      <Route path="/quiz" element={<Quiz />}></Route>
-      <Route path="/testbooster" element={<Testoboost />}></Route>
-      <Route path="/training_creator" element={<TrainingPlan />}></Route>
-      <Route path="/training_plan" element={<Plan />}></Route>
       <Route
-        path="/aaa"
+        path="/quiz"
         element={
           <PrivateRoute>
-            <Home />
+            <Quiz />
+          </PrivateRoute>
+        }
+      ></Route>
+      <Route
+        path="/training_plan"
+        element={
+          <PrivateRoute>
+            {isTrainer1 ? <TrainingPlan /> : <Plan />}
+          </PrivateRoute>
+        }
+      ></Route>
+      <Route
+        path="/testbooster"
+        element={
+          <PrivateRoute>
+            <Testoboost />
           </PrivateRoute>
         }
       ></Route>

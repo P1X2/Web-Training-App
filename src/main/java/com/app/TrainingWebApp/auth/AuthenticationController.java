@@ -3,6 +3,7 @@ package com.app.TrainingWebApp.auth;
 import com.app.TrainingWebApp.config.JwtService;
 import com.app.TrainingWebApp.exceptions.ApiException;
 import com.app.TrainingWebApp.exceptions.UsernameAlreadyExistsException;
+import com.app.TrainingWebApp.user.Role;
 import com.app.TrainingWebApp.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +59,18 @@ public class AuthenticationController {
     public ResponseEntity<Boolean> validateJwt(
             @RequestParam String token, @AuthenticationPrincipal User user
     ){
-        return ResponseEntity.ok(jwtService.isTokenValid(user,token));
+        try {
+            return ResponseEntity.ok(jwtService.isTokenValid(user, token));
+        }catch (Exception e){
+            return ResponseEntity.ok(false);
+        }
     }
 
+    @GetMapping("/role")
+    public RoleResponse getRole(
+            @AuthenticationPrincipal User user
+    ){
+        return new RoleResponse(user.getRole().name());
+    }
 
 }

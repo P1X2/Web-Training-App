@@ -23,32 +23,4 @@ public class ExerciseForPlan {
     private Float weight;
     private String videoUrl;
     private MuscleGroup muscleGroup;
-
-
-//    ExerciseForPlan(
-//            String name, Integer minReps, Integer maxReps, Integer minWeight,
-//            Integer maxWeight, String videoUrl, MuscleGroup muscleGroup,
-//            Integer reps, Float weight
-//                    ){
-//        name=name;
-//        minReps=minReps;
-//        maxReps=maxReps;
-//        minWeight=minWeight;
-//        maxWeight=maxWeight;
-//        videoUrl=videoUrl;
-//        muscleGroup=muscleGroup;
-//        reps=reps;
-//        weight=weight;
-//    }
-//
-//    ExerciseForPlan(ExerciseBlank exerciseBlank, Integer reps, Float weight){
-//        setName(exerciseBlank.getName());
-//        setReps(reps);
-//        setWeight(weight);
-//        setMaxReps(exerciseBlank.getMaxReps());
-//        setMinReps(exerciseBlank.getMinReps());
-//        setMinWeight(exerciseBlank.getMinWeight());
-//        setMaxWeight(exerciseBlank.getMaxWeight());
-//        setVideoUrl(exerciseBlank.getVideoUrl());
-//    }
 }
