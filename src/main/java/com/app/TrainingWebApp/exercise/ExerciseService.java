@@ -1,6 +1,7 @@
 package com.app.TrainingWebApp.exercise;
 
 import com.app.TrainingWebApp.exercise.requests.ExerciseBlankCreateRequest;
+import com.app.TrainingWebApp.exercise.requests.ExerciseDeleteRequest;
 import com.app.TrainingWebApp.exercise.requests.ExerciseForPlanCreateRequest;
 import lombok.AllArgsConstructor;
 import org.hibernate.ObjectNotFoundException;
@@ -30,6 +31,10 @@ public class ExerciseService {
             throw new ObjectNotFoundException(ExerciseBlank.class,"Invalid muscle group "+muscleGroup);
         }
         return exercises;
+    }
+
+    public void deleteEntityById(ExerciseDeleteRequest req) {
+        exerciseBlankRepository.deleteById(req.getId());
     }
 
     public ExerciseBlank createExerciseBlank(ExerciseBlankCreateRequest request){

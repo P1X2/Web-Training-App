@@ -2,6 +2,7 @@ package com.app.TrainingWebApp.exercise;
 
 
 import com.app.TrainingWebApp.exercise.requests.ExerciseBlankCreateRequest;
+import com.app.TrainingWebApp.exercise.requests.ExerciseDeleteRequest;
 import com.app.TrainingWebApp.exercise.requests.ExerciseForPlanCreateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class ExerciseController {
             @RequestParam MuscleGroup muscleGroup
     ){
         return service.getExercisesBlankByMuscleGroup(muscleGroup);
+    }
+
+    @DeleteMapping("/blank/delete")
+    public void deleteEntityById(
+        @RequestBody ExerciseDeleteRequest req 
+    ){
+        service.deleteEntityById(req);
     }
 
     @PostMapping("/blank/create")
