@@ -22,9 +22,10 @@ function TrainingPlan() {
   }, []);
 
   const fetchExercises = () => {
-    sendRequest("rest/exercise/blank/get/all", "GET", "")
+    sendRequest("rest/exercise/blank/get/all", "GET", jwt)
       .then((data) => {
         setExercises(data);
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error occurred while fetching exercises", error);
@@ -86,9 +87,9 @@ function TrainingPlan() {
     };
 
     try {
-      sendRequest("rest/exercise/blank/delete", "DELETE",'',req);
-      fetchExercises(); // Fetch the updated exercise list from the server
+      sendRequest("rest/exercise/blank/delete", "DELETE", jwt, req);
 
+      fetchExercises(); // Fetch the updated exercise list from the server
     } catch (error) {
       console.error("Error occurred while deleting exercise", error);
     }
